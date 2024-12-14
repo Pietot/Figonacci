@@ -1,8 +1,12 @@
 package main
 
-func FibonacciRecursive(n int) int {
+import "math/big"
+
+func FibonacciRecursive(n int) *big.Int {
 	if n <= 1 {
-		return n
+		return big.NewInt(int64(n))
 	}
-	return FibonacciRecursive(n-1) + FibonacciRecursive(n-2)
+	a := FibonacciRecursive(n-1)
+	b := FibonacciRecursive(n-2)
+	return new(big.Int).Add(a, b)
 }

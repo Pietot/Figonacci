@@ -1,14 +1,18 @@
 package main
 
-var lookupTable = map[int]int{
-	0: 0,
-	1: 1,
+import "math/big"
+
+var lookupTable = map[int]*big.Int{
+	0: big.NewInt(0),
+	1: big.NewInt(1),
 }
 
-func FibonacciRecursiveOptimized(n int) int {
+func FibonacciRecursiveOptimized(n int) *big.Int {
 	if val, ok := lookupTable[n]; ok {
 		return val
 	}
-	lookupTable[n] = FibonacciRecursiveOptimized(n-1) + FibonacciRecursiveOptimized(n-2)
+	a := FibonacciRecursiveOptimized(n-1)
+	b := FibonacciRecursiveOptimized(n-2)
+	lookupTable[n] = new(big.Int).Add(a, b)
 	return lookupTable[n]
 }
