@@ -2,13 +2,14 @@ package timer
 
 import (
 	"fmt"
+	"math/big"
 	"time"
 )
 
-func Timer(f func(int) int) (int, int, string) {
+func Timer(f func(int) *big.Int) (int, string, string, string) {
 	computeTimeStart := time.Now()
 	number := 0
-	fibonacciNumber := 0
+	fibonacciNumber := new(big.Int)
 	for {
 		start := time.Now()
 		fibonacciNumber = f(number)
@@ -19,7 +20,9 @@ func Timer(f func(int) int) (int, int, string) {
 		number++
 	}
 	computeTimeElapsed := fmt.Sprintf("%.2fs", time.Since(computeTimeStart).Seconds())
-	return number, fibonacciNumber, computeTimeElapsed
+    fibonacciNumberString := fibonacciNumber.String()
+    fibonacciNumberStringLen := fmt.Sprintf("%d digits", len(fibonacciNumberString))
+	return number, fibonacciNumberString, fibonacciNumberStringLen, computeTimeElapsed
 }
 
 func TimeNumber(f func(int) int, number int) int {
