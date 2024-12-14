@@ -1,45 +1,50 @@
 package timer
 
 import (
+	"context"
 	"fmt"
 	"math/big"
 	"time"
 )
 
-func Timer(f func(int) *big.Int) (int, string, string, string) {
+func Timer(f func(int, context.Context) *big.Int) (int, string, string, string) {
 	computeTimeStart := time.Now()
-	low_number, high_number := 0, 1
+	lowNumber, highNumber := 0, 1
 
 	// Initial test to find the range of numbers that takes less than 1 second to compute
 	for {
+		ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 		start := time.Now()
-		f(high_number)
+		f(highNumber, ctx)
 		elapsed := time.Since(start)
+		cancel() // Annule le contexte après utilisation
 		if elapsed > time.Second {
 			break
 		}
-		low_number = high_number
-		high_number *= 2
+		lowNumber = highNumber
+		highNumber *= 2
 	}
 
 	// Binary search to find the biggest number that takes less than 1 second to compute
 	var fibonacciNumber *big.Int
-	for low_number <= high_number {
-		mid := (low_number + high_number) / 2
+	for lowNumber <= highNumber {
+		mid := (lowNumber + highNumber) / 2
+		ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 		start := time.Now()
-		fibonacciNumber = f(mid)
+		fibonacciNumber = f(mid, ctx)
 		elapsed := time.Since(start)
+		cancel() // Annule le contexte après utilisation
 		if elapsed < time.Second {
-			low_number = mid + 1
+			lowNumber = mid + 1
 		} else {
-			high_number = mid - 1
+			highNumber = mid - 1
 		}
 	}
 
 	fibonacciNumberString := fibonacciNumber.String()
 	fibonacciNumberStringLen := fmt.Sprintf("%d digits", len(fibonacciNumberString))
 	computeTimeElapsed := fmt.Sprintf("%.2fs", time.Since(computeTimeStart).Seconds())
-	return high_number, fibonacciNumberString, fibonacciNumberStringLen, computeTimeElapsed
+	return highNumber, fibonacciNumberString, fibonacciNumberStringLen, computeTimeElapsed
 }
 
 func TimeNumber(f func(int) *big.Int, number int) (string, string, string) {
