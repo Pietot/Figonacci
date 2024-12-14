@@ -7,20 +7,21 @@ import (
 )
 
 func Timer(f func(int) *big.Int) (int, string, string, string) {
-    computeTimeStart := time.Now()
+	computeTimeStart := time.Now()
     low_number, high_number := 0, 1
-
+	// Initial test to find the range of numbers that takes less than 1 second to compute
     for {
-        start := time.Now()
+		start := time.Now()
         f(high_number)
         elapsed := time.Since(start)
         if elapsed > time.Second {
-            break
+			break
         }
         low_number = high_number
         high_number *= 2
     }
-
+	
+	// Binary search to find the biggest number that takes less than 1 second to compute
     var fibonacciNumber *big.Int
     for low_number <= high_number {
         mid := (low_number + high_number) / 2
