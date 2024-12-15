@@ -47,11 +47,13 @@ func Timer(f func(int, context.Context) *big.Int) (int, string, string, string) 
 	return highNumber, fibonacciNumberString, fibonacciNumberStringLen, computeTimeElapsed
 }
 
-func TimeNumber(f func(int) *big.Int, number int) (string, string, string) {
+func TimeNumber(f func(int, context.Context) *big.Int, number int) (string, string, string) {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	fibonacciNumber := new(big.Int)
 	start := time.Now()
-	fibonacciNumber = f(number)
+	fibonacciNumber = f(number, ctx)
 	elapsed := time.Since(start)
+	cancel()
 	fibonacciNumberString := fibonacciNumber.String()
 	fibonacciNumberStringLen := fmt.Sprintf("%d digits", len(fibonacciNumberString))
 	computeTimeElapsed := fmt.Sprintf("%.2fs", elapsed.Seconds())
