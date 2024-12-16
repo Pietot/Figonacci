@@ -3,5 +3,5 @@ package main
 import "Figonacci/timer"
 
 func main() {
-	println(timer.Timer(FibonacciRecursiveOptimized))
+	println(timer.Timer(FibonacciMatrix))
 }
