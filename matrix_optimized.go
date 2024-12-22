@@ -6,7 +6,8 @@ import (
 	"math/big"
 )
 
-func FibonacciMatrix(n int, ctx context.Context) *big.Int {
+// Use of fast exponentiation to calculate the Fibonacci number
+func FibonacciMatrixOptimized(n int, ctx context.Context) *big.Int {
 	result := big.NewInt(0)
 	done := make(chan struct{})
 
@@ -20,7 +21,7 @@ func FibonacciMatrix(n int, ctx context.Context) *big.Int {
 			[2]*big.Int{big.NewInt(1), big.NewInt(1)},
 			[2]*big.Int{big.NewInt(1), big.NewInt(0)},
 		}
-		resultMatrix := fibonacciMatrix.Pow(n - 1)
+		resultMatrix := fibonacciMatrix.FastPow(n - 1)
 		result.Set(resultMatrix[0][0])
 	}()
 
