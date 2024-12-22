@@ -11,16 +11,25 @@ var lookupTable = map[int]*big.Int{
 }
 
 func FibonacciRecursiveOptimized(n int, ctx context.Context) *big.Int {
-	select {
-	case <-ctx.Done():
-		return big.NewInt(0)
-	default:
+	result := big.NewInt(0)
+	done := make(chan struct{})
+
+	go func() {
+		defer close(done)
 		if val, ok := lookupTable[n]; ok {
-			return val
+			result.Set(val)
+			return
 		}
 		a := FibonacciRecursiveOptimized(n-1, ctx)
 		b := FibonacciRecursiveOptimized(n-2, ctx)
 		lookupTable[n] = new(big.Int).Add(a, b)
-		return lookupTable[n]
+		result.Set(lookupTable[n])
+	}()
+	
+	select {
+	case <-ctx.Done():
+		return big.NewInt(0)
+	case <-done:
+		return result
 	}
 }
