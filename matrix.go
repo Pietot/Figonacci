@@ -12,8 +12,8 @@ func FibonacciMatrix(n int, ctx context.Context) *big.Int {
 
 	go func() {
 		defer close(done)
-		if n == 0 {
-			result.SetInt64(0)
+		if n <= 1 {
+			result.SetInt64(int64(n))
 			return
 		}
 		fibonacciMatrix := &matrix.Matrix2x2{
