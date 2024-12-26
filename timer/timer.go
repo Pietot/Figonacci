@@ -8,8 +8,8 @@ import (
 )
 
 func Timer(f func(int, context.Context) *big.Int) (int, string, string, string) {
-	computeTimeStart := time.Now()
 	lowNumber, highNumber := 0, 1
+	computeTimeStart := time.Now()
 
 	// Initial test to find the range of numbers that takes less than 1 second to compute
 	for {
@@ -17,7 +17,7 @@ func Timer(f func(int, context.Context) *big.Int) (int, string, string, string) 
 		start := time.Now()
 		f(highNumber, ctx)
 		elapsed := time.Since(start)
-		cancel() // Annule le contexte après utilisation
+		cancel()
 		if elapsed > time.Second {
 			break
 		}
@@ -33,7 +33,7 @@ func Timer(f func(int, context.Context) *big.Int) (int, string, string, string) 
 		start := time.Now()
 		fibonacciNumber = f(mid, ctx)
 		elapsed := time.Since(start)
-		cancel() // Annule le contexte après utilisation
+		cancel()
 		if elapsed < time.Second {
 			lowNumber = mid + 1
 		} else {
