@@ -23,7 +23,7 @@ func Timer(f func(int, context.Context) *big.Int, limit ...interface{}) string {
 
 	// Initial test to find the range of numbers that takes less than 1 second to compute
 	for {
-		ctx, cancel := context.WithTimeout(context.Background(), time.Second*duration)
+		ctx, cancel := context.WithTimeout(context.Background(), duration)
 		if f(highNumber, ctx).Cmp(zero) == 0 {
 			cancel()
 			break
@@ -83,11 +83,11 @@ func TimeNumber(f func(int, context.Context) *big.Int, number int) string {
 
 func checkLimit(limit ...interface{}) (time.Duration, error) {
 	if len(limit) == 1 {
-		switch v := limit[0].(type) {
-		case int:
-			return time.Duration(v) * time.Second, nil
+		switch _time := limit[0].(type) {
+		case float64:
+			return time.Duration(_time * float64(time.Second)), nil
 		default:
-			return 0, fmt.Errorf("argument must be an integer")
+			return 0, fmt.Errorf("argument must be a float64")
 		}
 	} else if len(limit) > 1 {
 		return 0, fmt.Errorf("too many arguments")
