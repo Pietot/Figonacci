@@ -72,9 +72,9 @@ func TimeNumber(f func(int, context.Context) *big.Int, number int) string {
 	computeTimeElapsed := fmt.Sprintf("%.2fs", elapsed.Seconds())
 
 	sentence := fmt.Sprintf(
-		"\nThe \033[33m%d\033[0mnth Fibonacci number is :\n\033[33m%s\033[0m\n\n"+
-			"It has \033[33m%d\033[0m digits.\n\n"+
-			"It has been found in \033[33m%s\033[0m",
+		"\nThe \033[32m%d\033[0mnth Fibonacci number is :\n\033[32m%s\033[0m\n\n"+
+			"It has \033[32m%d\033[0m digits.\n\n"+
+			"It has been found in \033[32m%s\033[0m",
 		number, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed,
 	)
 
