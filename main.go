@@ -42,7 +42,7 @@ func printUsage() {
 	fmt.Println("")
 	fmt.Println("    Usage:")
 	fmt.Println("")
-	fmt.Println("        timer   --{algorithm}")
+	fmt.Println("        timer   --{algorithm} --{limit} (optional, in second, default to 1 second)")
 	fmt.Println("        \033[35mTo find the largest Fibonacci index calculable in less than a second\033[0m")
 	fmt.Println("")
 	fmt.Println("        compute --{algorithm} --{value}")
@@ -60,8 +60,8 @@ func printUsage() {
 }
 
 func handleTimer(args []string) error {
-	if len(args) != 1 || len(args[0]) < 3 || args[0][:2] != "--" {
-		return fmt.Errorf("invalid syntax for timer. Expected: --{algorithm}")
+	if len(args) > 2 || args[0][:2] != "--" || (len(args) == 2 && args[1][:2] != "--") {
+		return fmt.Errorf("invalid syntax for timer. Expected: --{algorithm} --{limit} (optional, in second, default to 1 second)")
 	}
 
 	algorithm := args[0][2:]
@@ -71,8 +71,21 @@ func handleTimer(args []string) error {
 		return fmt.Errorf("invalid algorithm: %s", algorithm)
 	}
 
+	var limit string
+
+	if len(args) == 2 {
+		limit = args[1][2:]
+	} else {
+		limit = "1"
+	}
+
+	limitFloat, err := strconv.ParseFloat(limit, 64)
+	if err != nil {
+		return fmt.Errorf("invalid limit: %s. Expected an integer or float", limit)
+	}
+
 	fmt.Printf("Executing timer with algorithm: %s\n", algorithm)
-	fmt.Println(timer.Timer(algFunc))
+	fmt.Println(timer.Timer(algFunc, limitFloat))
 	return nil
 }
 
