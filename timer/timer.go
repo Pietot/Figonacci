@@ -36,7 +36,7 @@ func Timer(f func(int, context.Context) *big.Int, limit ...interface{}) string {
 	// Binary search to find the biggest number that takes less than 1 second to compute
 	for lowNumber <= highNumber {
 		mid := (lowNumber + highNumber) / 2
-		ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+		ctx, cancel := context.WithTimeout(context.Background(), duration)
 		fibonacciNumber = f(mid, ctx)
 		if fibonacciNumber.Cmp(zero) == 0 {
 			cancel()
