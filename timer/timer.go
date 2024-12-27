@@ -51,11 +51,11 @@ func Timer(f func(int, context.Context) *big.Int, limit ...interface{}) string {
 	computeTimeElapsed := time.Since(computeTimeStart).Seconds()
 
 	sentence := fmt.Sprintf(
-		"\nThe biggest Fibonacci number that has been computed in less than 1 second is the \033[32m%dnth\033[0m Fibonacci number\n\n"+
+		"\nThe biggest Fibonacci number that has been computed in less than \033[35m%.3f\033[0m second is the \033[32m%d\033[0m nth Fibonacci number\n\n"+
 			"It's value is :\n\033[32m%s\033[0m\n\n"+
 			"It has \033[32m%d\033[0m digits.\n\n"+
 			"It has been found in \033[32m%.3f\033[0m seconds",
-		highNumber, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed,
+		duration.Seconds(), highNumber, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed,
 	)
 
 	return sentence
