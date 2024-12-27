@@ -7,7 +7,15 @@ import (
 	"time"
 )
 
-func Timer(f func(int, context.Context) *big.Int) string {
+func Timer(f func(int, context.Context) *big.Int, limit ...interface{}) string {
+	var duration time.Duration
+
+	if limit_seconds, err := checkLimit(limit...); err != nil {
+		return fmt.Sprintf("Error: %s", err)
+	} else {
+		duration = limit_seconds
+	}
+
 	fibonacciNumber := new(big.Int)
 	zero := big.NewInt(0)
 	lowNumber, highNumber := 0, 1
@@ -15,7 +23,7 @@ func Timer(f func(int, context.Context) *big.Int) string {
 
 	// Initial test to find the range of numbers that takes less than 1 second to compute
 	for {
-		ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+		ctx, cancel := context.WithTimeout(context.Background(), time.Second*duration)
 		if f(highNumber, ctx).Cmp(zero) == 0 {
 			cancel()
 			break
@@ -71,4 +79,19 @@ func TimeNumber(f func(int, context.Context) *big.Int, number int) string {
 	)
 
 	return sentence
+}
+
+func checkLimit(limit ...interface{}) (time.Duration, error) {
+	if len(limit) == 1 {
+		switch v := limit[0].(type) {
+		case int:
+			return time.Duration(v) * time.Second, nil
+		default:
+			return 0, fmt.Errorf("argument must be an integer")
+		}
+	} else if len(limit) > 1 {
+		return 0, fmt.Errorf("too many arguments")
+	} else {
+		return time.Second, nil
+	}
 }
