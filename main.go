@@ -66,8 +66,8 @@ func handleTimer(args []string) error {
 
 	algorithm := args[0][2:]
 
-	algFunc := isValidAlgorithm(algorithm)
-	if algFunc == nil {
+	algoFunc, algoName := isValidAlgorithm(algorithm)
+	if algoFunc == nil {
 		return fmt.Errorf("invalid algorithm: %s", algorithm)
 	}
 
@@ -84,8 +84,8 @@ func handleTimer(args []string) error {
 		return fmt.Errorf("invalid limit: %s. Expected an integer or float", limit)
 	}
 
-	fmt.Printf("Executing timer with algorithm: %s\n", algorithm)
-	fmt.Println(timer.Timer(algFunc, limitFloat))
+	fmt.Printf("Executing timer with algorithm: %s\n", algoName)
+	fmt.Println(timer.Timer(algoFunc, limitFloat))
 	return nil
 }
 
@@ -97,8 +97,8 @@ func handleCompute(args []string) error {
 	algorithm := args[0][2:]
 	valueStr := args[1][2:]
 
-	algFunc := isValidAlgorithm(algorithm)
-	if algFunc == nil {
+	algoFunc, algoName := isValidAlgorithm(algorithm)
+	if algoFunc == nil {
 		return fmt.Errorf("invalid algorithm: %s", algorithm)
 	}
 
@@ -107,29 +107,32 @@ func handleCompute(args []string) error {
 		return fmt.Errorf("invalid value: %s. Expected an integer", valueStr)
 	}
 
-	fmt.Printf("Executing compute with algorithm: %s and value: %d\n", algorithm, value)
-	fmt.Println(timer.TimeNumber(algFunc, value))
+	fmt.Printf("Executing compute with algorithm: %s and value: %d\n", algoName, value)
+	fmt.Println(timer.TimeNumber(algoFunc, value))
 	return nil
 }
 
-func isValidAlgorithm(algorithm string) func(int, context.Context) *big.Int {
-	validAlgorithms := map[string]func(int, context.Context) *big.Int{
-		"recursive":           FibonacciRecursive,
-		"r":                   FibonacciRecursive,
-		"recursive_optimized": FibonacciRecursiveOptimized,
-		"ro":                  FibonacciRecursiveOptimized,
-		"iterative":           FibonacciIterative,
-		"i":                   FibonacciIterative,
-		"matrix":              FibonacciMatrix,
-		"m":                   FibonacciMatrix,
-		"matrix_optimized":    FibonacciMatrixOptimized,
-		"mo":                  FibonacciMatrixOptimized,
-		"field_extension":     FibonacciFieldExtension,
-		"fe":                  FibonacciFieldExtension,
+func isValidAlgorithm(algorithm string) (func(int, context.Context) *big.Int, string) {
+	validAlgorithms := map[string]struct {
+		function func(int, context.Context) *big.Int
+		name     string
+	}{
+		"recursive":           {FibonacciRecursive, "recursive"},
+		"r":                   {FibonacciRecursive, "recursive"},
+		"recursive_optimized": {FibonacciRecursiveOptimized, "recursive optimized"},
+		"ro":                  {FibonacciRecursiveOptimized, "recursive optimized"},
+		"iterative":           {FibonacciIterative, "iterative"},
+		"i":                   {FibonacciIterative, "iterative"},
+		"matrix":              {FibonacciMatrix, "matrix"},
+		"m":                   {FibonacciMatrix, "matrix"},
+		"matrix_optimized":    {FibonacciMatrixOptimized, "matrix optimized"},
+		"mo":                  {FibonacciMatrixOptimized, "matrix optimized"},
+		"field_extension":     {FibonacciFieldExtension, "field extension"},
+		"fe":                  {FibonacciFieldExtension, "field extension"},
 	}
 
-	if function, exists := validAlgorithms[algorithm]; exists {
-		return function
+	if entry, exists := validAlgorithms[algorithm]; exists {
+		return entry.function, entry.name
 	}
-	return nil
+	return nil, ""
 }
