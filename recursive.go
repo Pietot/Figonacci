@@ -9,13 +9,24 @@ func FibonacciRecursive(n int, ctx context.Context) *big.Int {
 	result := big.NewInt(0)
 	done := make(chan struct{})
 
+	var recursive func(int, context.Context) *big.Int
+	recursive = func(n int, ctx context.Context) *big.Int {
+		if n <= 1 {
+			return big.NewInt(int64(n))
+		}
+		select {
+		case <-ctx.Done():
+			return big.NewInt(0)
+		default:
+			a := recursive(n-1, ctx)
+			b := recursive(n-2, ctx)
+			return new(big.Int).Add(a, b)
+		}
+	}
+
 	go func() {
 		defer close(done)
-		if n <= 1 {
-			result.SetInt64(int64(n))
-			return
-		}
-		result.Add(FibonacciRecursive(n-1, ctx), FibonacciRecursive(n-2, ctx))
+		result.Set(recursive(n, ctx))
 	}()
 
 	select {
