@@ -17,6 +17,7 @@ func Timer(f func(int, context.Context) *big.Int, limit ...interface{}) string {
 	}
 
 	fibonacciNumber := new(big.Int)
+	fibonacciTemp := new(big.Int)
 	zero := big.NewInt(0)
 	lowNumber, highNumber := 0, 1
 	computeTimeStart := time.Now()
@@ -37,13 +38,14 @@ func Timer(f func(int, context.Context) *big.Int, limit ...interface{}) string {
 	for lowNumber <= highNumber {
 		mid := (lowNumber + highNumber) / 2
 		ctx, cancel := context.WithTimeout(context.Background(), duration)
-		fibonacciNumber = f(mid, ctx)
-		if fibonacciNumber.Cmp(zero) == 0 {
+		fibonacciTemp = f(mid, ctx)
+		if fibonacciTemp.Cmp(zero) == 0 {
 			cancel()
 			highNumber = mid - 1
 		} else {
 			cancel()
 			lowNumber = mid + 1
+			fibonacciNumber.Set(fibonacciTemp)
 		}
 	}
 
