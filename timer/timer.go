@@ -7,15 +7,8 @@ import (
 	"time"
 )
 
-func Timer(f func(int, context.Context) *big.Int, limit ...interface{}) string {
-	var duration time.Duration
-
-	if limit_seconds, err := checkLimit(limit...); err != nil {
-		return fmt.Sprintf("Error: %s", err)
-	} else {
-		duration = limit_seconds
-	}
-
+func Timer(f func(int, context.Context) *big.Int, limit float64) (string, []interface{}) {
+	duration := time.Duration(limit * float64(time.Second))
 	fibonacciNumber := new(big.Int)
 	fibonacciTemp := new(big.Int)
 	zero := big.NewInt(0)
@@ -63,7 +56,7 @@ func Timer(f func(int, context.Context) *big.Int, limit ...interface{}) string {
 	return sentence
 }
 
-func TimeNumber(f func(int, context.Context) *big.Int, number int) string {
+func TimeNumber(f func(int, context.Context) *big.Int, number int) (string, []interface{}) {
 	ctx := context.Background()
 	fibonacciNumber := new(big.Int)
 	start := time.Now()
@@ -80,20 +73,6 @@ func TimeNumber(f func(int, context.Context) *big.Int, number int) string {
 		number, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed,
 	)
 
-	return sentence
+	return sentence, []interface{}{number, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed}
 }
 
-func checkLimit(limit ...interface{}) (time.Duration, error) {
-	if len(limit) == 1 {
-		switch _time := limit[0].(type) {
-		case float64:
-			return time.Duration(_time * float64(time.Second)), nil
-		default:
-			return 0, fmt.Errorf("argument must be a float64")
-		}
-	} else if len(limit) > 1 {
-		return 0, fmt.Errorf("too many arguments")
-	} else {
-		return time.Second, nil
-	}
-}
