@@ -42,10 +42,10 @@ func printUsage() {
 	fmt.Println("")
 	fmt.Println("    Usage:")
 	fmt.Println("")
-	fmt.Println("        timer   --{algorithm} --{limit} (optional, in second, default to 1 second)")
+	fmt.Println("        timer   --algorithm [--limit] (optional, in second, default to 1 second)")
 	fmt.Println("        \033[35mTo find the largest Fibonacci index calculable in less than a second\033[0m")
 	fmt.Println("")
-	fmt.Println("        compute --{algorithm} --{value}")
+	fmt.Println("        compute --algorithm --value")
 	fmt.Println("        \033[35mTo compute the Fibonacci number at the specified index\033[0m")
 	fmt.Println("")
 	fmt.Println("    Available algorithms (from \033[31mslowest\033[0m to \033[34mfastest\033[0m):")
@@ -61,7 +61,7 @@ func printUsage() {
 
 func handleTimer(args []string) error {
 	if len(args) > 2 || args[0][:2] != "--" || (len(args) == 2 && args[1][:2] != "--") {
-		return fmt.Errorf("invalid syntax for timer. Expected: --{algorithm} --{limit} (optional, in second, default to 1 second)")
+		return fmt.Errorf("invalid syntax for timer. Expected: --algorithm [--limit] (optional, in second, default to 1 second)")
 	}
 
 	algorithm := args[0][2:]
@@ -93,7 +93,7 @@ func handleTimer(args []string) error {
 
 func handleCompute(args []string) error {
 	if len(args) != 2 || len(args[0]) < 3 || args[0][:2] != "--" || len(args[1]) < 3 || args[1][:2] != "--" {
-		return fmt.Errorf("invalid syntax for compute. Expected: --{algorithm} --{value}")
+		return fmt.Errorf("invalid syntax for compute. Expected: --algorithm --value")
 	}
 
 	algorithm := args[0][2:]
