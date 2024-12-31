@@ -44,14 +44,14 @@ func Timer(f func(int, context.Context) *big.Int, limit float64) (string, []inte
 
 	fibonacciNumberString := fibonacciNumber.String()
 	computeTimeElapsed := time.Since(computeTimeStart)
-	computeTimeFormated := formatDuration(computeTimeElapsed)
+	computeTimeFormated := formatDuration(computeTimeElapsed, 3)
 
 	sentence := fmt.Sprintf(
-		"\nThe biggest Fibonacci number that has been computed in less than \033[35m%.3f\033[0m second is the \033[32m%dnth\033[0m Fibonacci number\n\n"+
+		"\nThe biggest Fibonacci number that has been computed in less than \033[35m%s\033[0m second is the \033[32m%dnth\033[0m Fibonacci number\n\n"+
 			"It's value is :\n\033[32m%s\033[0m\n\n"+
 			"It has \033[32m%d\033[0m digits.\n\n"+
 			"It has been found in \033[32m%s\033[0m",
-		duration.Seconds(), highNumber, fibonacciNumberString, len(fibonacciNumberString), computeTimeFormated,
+		formatDuration(duration, 0), highNumber, fibonacciNumberString, len(fibonacciNumberString), computeTimeFormated,
 	)
 
 	return sentence, []interface{}{highNumber, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed}
@@ -66,7 +66,7 @@ func TimeNumber(f func(int, context.Context) *big.Int, number int) (string, []in
 
 	fibonacciNumberString := fibonacciNumber.String()
 	computeTimeElapsed := time.Since(computeTimeStart)
-	computeTimeFormated := formatDuration(computeTimeElapsed)
+	computeTimeFormated := formatDuration(computeTimeElapsed, 3)
 
 	sentence := fmt.Sprintf(
 		"\nThe \033[35m%dnth\033[0m Fibonacci number is :\n\033[32m%s\033[0m\n\n"+
@@ -78,21 +78,21 @@ func TimeNumber(f func(int, context.Context) *big.Int, number int) (string, []in
 	return sentence, []interface{}{number, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed}
 }
 
-func formatDuration(duration time.Duration) string {
+func formatDuration(duration time.Duration, precision int) string {
 	switch {
 	case duration < time.Nanosecond:
 		return fmt.Sprintf("%v", duration)
 	case duration < time.Microsecond:
-		return fmt.Sprintf("%.3fns", float64(duration)/float64(time.Nanosecond))
+		return fmt.Sprintf("%.*fns", precision, float64(duration)/float64(time.Nanosecond))
 	case duration < time.Millisecond:
-		return fmt.Sprintf("%.3fµs", float64(duration)/float64(time.Microsecond))
+		return fmt.Sprintf("%.*fµs", precision, float64(duration)/float64(time.Microsecond))
 	case duration < time.Second:
-		return fmt.Sprintf("%.3fms", float64(duration)/float64(time.Millisecond))
+		return fmt.Sprintf("%.*fms", precision, float64(duration)/float64(time.Millisecond))
 	case duration < time.Minute:
-		return fmt.Sprintf("%.3fs", float64(duration)/float64(time.Second))
+		return fmt.Sprintf("%.*fs", precision, float64(duration)/float64(time.Second))
 	case duration < time.Hour:
-		return fmt.Sprintf("%.3fmin", float64(duration)/float64(time.Minute))
+		return fmt.Sprintf("%.*fmin", precision, float64(duration)/float64(time.Minute))
 	default:
-		return fmt.Sprintf("%.3fh", float64(duration)/float64(time.Hour))
+		return fmt.Sprintf("%.*fh", precision, float64(duration)/float64(time.Hour))
 	}
 }
