@@ -2,4 +2,4 @@ Specific :
     - Add Fast Fourier Transform (FFT) to the list of algorithms (https://youtu.be/KzT9I1d-LlQ?t=1047)
 General :
     - Implement new algorithms (if exist)
-    - Optimize algorithm
+    - Optimize algorithms (on gpu and multi-processing especially)
