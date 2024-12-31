@@ -2,6 +2,7 @@ package main
 
 import (
 	"Figonacci/timer"
+	"Figonacci/algorithms"
 	"context"
 	"fmt"
 	"math/big"
@@ -121,18 +122,18 @@ func isValidAlgorithm(algorithm string) (func(int, context.Context) *big.Int, st
 		function func(int, context.Context) *big.Int
 		name     string
 	}{
-		"recursive":           {FibonacciRecursive, "recursive"},
-		"r":                   {FibonacciRecursive, "recursive"},
-		"recursive_optimized": {FibonacciRecursiveOptimized, "recursive optimized"},
-		"ro":                  {FibonacciRecursiveOptimized, "recursive optimized"},
-		"iterative":           {FibonacciIterative, "iterative"},
-		"i":                   {FibonacciIterative, "iterative"},
-		"matrix":              {FibonacciMatrix, "matrix"},
-		"m":                   {FibonacciMatrix, "matrix"},
-		"matrix_optimized":    {FibonacciMatrixOptimized, "matrix optimized"},
-		"mo":                  {FibonacciMatrixOptimized, "matrix optimized"},
-		"field_extension":     {FibonacciFieldExtension, "field extension"},
-		"fe":                  {FibonacciFieldExtension, "field extension"},
+		"recursive":           {algorithms.FibonacciRecursive, "recursive"},
+		"r":                   {algorithms.FibonacciRecursive, "recursive"},
+		"recursive_optimized": {algorithms.FibonacciRecursiveOptimized, "recursive optimized"},
+		"ro":                  {algorithms.FibonacciRecursiveOptimized, "recursive optimized"},
+		"iterative":           {algorithms.FibonacciIterative, "iterative"},
+		"i":                   {algorithms.FibonacciIterative, "iterative"},
+		"matrix":              {algorithms.FibonacciMatrix, "matrix"},
+		"m":                   {algorithms.FibonacciMatrix, "matrix"},
+		"matrix_optimized":    {algorithms.FibonacciMatrixOptimized, "matrix optimized"},
+		"mo":                  {algorithms.FibonacciMatrixOptimized, "matrix optimized"},
+		"field_extension":     {algorithms.FibonacciFieldExtension, "field extension"},
+		"fe":                  {algorithms.FibonacciFieldExtension, "field extension"},
 	}
 
 	if entry, exists := validAlgorithms[algorithm]; exists {
