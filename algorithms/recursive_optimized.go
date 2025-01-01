@@ -27,11 +27,9 @@ func FibonacciRecursiveOptimized(n int, ctx context.Context) *big.Int {
 		default:
 			mu.Lock()
 			if val, exist := lookupTable[n]; exist {
-				result.Set(val)
 				mu.Unlock()
-				return result
+				return new(big.Int).Set(val)
 			}
-
 			mu.Unlock()
 
 			a := recursive(n-1, ctx)
@@ -39,7 +37,7 @@ func FibonacciRecursiveOptimized(n int, ctx context.Context) *big.Int {
 
 			mu.Lock()
 			lookupTable[n] = new(big.Int).Add(a, b)
-			result.Set(lookupTable[n])
+			result := new(big.Int).Set(lookupTable[n])
 			mu.Unlock()
 			return result
 		}
