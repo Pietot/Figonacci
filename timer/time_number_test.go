@@ -87,6 +87,40 @@ func TestRecursiveResult(test *testing.T) {
 	}
 }
 
+func TestMatrixResult(test *testing.T) {
+	unitTests := []struct {
+		name     string
+		function func(int, context.Context) *big.Int
+		number   int
+	}{
+		{"Recursive", algorithms.FibonacciRecursive, 0},
+		{"Recursive", algorithms.FibonacciRecursive, 1},
+		{"Recursive", algorithms.FibonacciRecursive, 10000},
+		{"Recursive", algorithms.FibonacciRecursive, 30000},
+		{"Recursive", algorithms.FibonacciRecursive, 40000},
+		{"Recursive", algorithms.FibonacciRecursive, 50000},
+		{"Recursive", algorithms.FibonacciRecursive, 60000},
+		{"Recursive", algorithms.FibonacciRecursive, 70000},
+		{"Recursive", algorithms.FibonacciRecursive, 80000},
+		{"Recursive", algorithms.FibonacciRecursive, 90000},
+		{"Recursive", algorithms.FibonacciRecursive, 100000},
+	}
+
+	for _, unitTest := range unitTests {
+		test.Run(unitTest.name, func(test *testing.T) {
+			_, result := TimeNumber(unitTest.function, unitTest.number)
+			expected, err := readFile(unitTest.number)
+			if err != nil {
+				test.Errorf("%v", err)
+				return
+			}
+			if result[1] != expected {
+				test.Errorf("Expected %s, got %s", expected, result[1])
+			}
+		})
+	}
+}
+
 func TestRecursiveOptimizedResult(test *testing.T) {
 	unitTests := []struct {
 		name     string
