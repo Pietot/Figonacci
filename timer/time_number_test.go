@@ -93,17 +93,10 @@ func TestMatrixResult(test *testing.T) {
 		function func(int, context.Context) *big.Int
 		number   int
 	}{
-		{"Recursive", algorithms.FibonacciRecursive, 0},
-		{"Recursive", algorithms.FibonacciRecursive, 1},
-		{"Recursive", algorithms.FibonacciRecursive, 10_000},
-		{"Recursive", algorithms.FibonacciRecursive, 30_000},
-		{"Recursive", algorithms.FibonacciRecursive, 40_000},
-		{"Recursive", algorithms.FibonacciRecursive, 50_000},
-		{"Recursive", algorithms.FibonacciRecursive, 60_000},
-		{"Recursive", algorithms.FibonacciRecursive, 70_000},
-		{"Recursive", algorithms.FibonacciRecursive, 80_000},
-		{"Recursive", algorithms.FibonacciRecursive, 90_000},
-		{"Recursive", algorithms.FibonacciRecursive, 100_000},
+		{"Matrix", algorithms.FibonacciMatrix, 0},
+		{"Matrix", algorithms.FibonacciMatrix, 1},
+		{"Matrix", algorithms.FibonacciMatrix, 10_000},
+		{"Matrix", algorithms.FibonacciMatrix, 100_000},
 	}
 
 	for _, unitTest := range unitTests {
