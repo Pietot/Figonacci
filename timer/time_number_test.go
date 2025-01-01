@@ -33,3 +33,34 @@ func TestTimeNumber(test *testing.T) {
 		})
 	}
 }
+
+func TestFibonacciRecursiveResult(test *testing.T) {
+	unitTests := []struct {
+		name     string
+		function func(int, context.Context) *big.Int
+		number   int
+		expected string
+	}{
+		{"Recursive", algorithms.FibonacciRecursive, 0, "0"},
+		{"Recursive", algorithms.FibonacciRecursive, 1, "1"},
+		{"Recursive", algorithms.FibonacciRecursive, 2, "1"},
+		{"Recursive", algorithms.FibonacciRecursive, 3, "2"},
+		{"Recursive", algorithms.FibonacciRecursive, 4, "3"},
+		{"Recursive", algorithms.FibonacciRecursive, 5, "5"},
+		{"Recursive", algorithms.FibonacciRecursive, 6, "8"},
+		{"Recursive", algorithms.FibonacciRecursive, 7, "13"},
+		{"Recursive", algorithms.FibonacciRecursive, 8, "21"},
+		{"Recursive", algorithms.FibonacciRecursive, 9, "34"},
+		{"Recursive", algorithms.FibonacciRecursive, 10, "55"},
+		{"Recursive", algorithms.FibonacciRecursive, 20, "6765"},
+	}
+
+	for _, unitTest := range unitTests {
+		test.Run(unitTest.name, func(test *testing.T) {
+			_, result := TimeNumber(unitTest.function, unitTest.number)
+			if result[1] != unitTest.expected {
+				test.Errorf("Expected %s, got %s", unitTest.expected, result[1])
+			}
+		})
+	}
+}
