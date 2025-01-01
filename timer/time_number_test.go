@@ -34,7 +34,7 @@ func TestTimeNumber(test *testing.T) {
 	}
 }
 
-func TestFibonacciRecursiveResult(test *testing.T) {
+func TestRecursiveResult(test *testing.T) {
 	unitTests := []struct {
 		name     string
 		function func(int, context.Context) *big.Int
