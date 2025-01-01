@@ -2,10 +2,32 @@ package timer
 
 import (
 	"Figonacci/algorithms"
+	"bufio"
 	"context"
+	"fmt"
 	"math/big"
+	"os"
+	"strconv"
 	"testing"
 )
+
+func readFile(index int) (string, error) {
+	filePath := "../fibonacci_numbers/" + strconv.Itoa(index) + ".txt"
+	file, err := os.Open(filePath)
+	if err != nil {
+		return "", fmt.Errorf("error opening file: %w", err)
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+
+	if scanner.Scan() {
+		return scanner.Text(), nil
+	} else {
+		return "", fmt.Errorf("error reading file: %w", scanner.Err())
+	}
+
+}
 
 func TestTimeNumber(test *testing.T) {
 	unitTests := []struct {
@@ -60,6 +82,41 @@ func TestRecursiveResult(test *testing.T) {
 			_, result := TimeNumber(unitTest.function, unitTest.number)
 			if result[1] != unitTest.expected {
 				test.Errorf("Expected %s, got %s", unitTest.expected, result[1])
+			}
+		})
+	}
+}
+
+func TestRecursiveOptimizedResult(test *testing.T) {
+	unitTests := []struct {
+		name     string
+		function func(int, context.Context) *big.Int
+		number   int
+	}{
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 0},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 1},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 100000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 200000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 300000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 400000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 500000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 600000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 700000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 800000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 900000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 1000000},
+	}
+
+	for _, unitTest := range unitTests {
+		test.Run(unitTest.name, func(test *testing.T) {
+			_, result := TimeNumber(unitTest.function, unitTest.number)
+			expected, err := readFile(unitTest.number)
+			if err != nil {
+				test.Errorf("%v", err)
+				return
+			}
+			if result[1] != expected {
+				test.Errorf("Expected %s, got %s", expected, result[1])
 			}
 		})
 	}
