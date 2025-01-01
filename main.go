@@ -85,7 +85,7 @@ func handleTimer(args []string) error {
 		return fmt.Errorf("invalid limit: %s. Expected an integer or float", limit)
 	}
 
-	fmt.Printf("Executing compute with algorithm \033[35m%s\033[0m...\n", algoName)
+	fmt.Printf("Executing timer with algorithm \033[35m%s\033[0m...\n", algoName)
 
 	sentence, _ := timer.Timer(algoFunc, limitFloat)
 	fmt.Println(sentence)
