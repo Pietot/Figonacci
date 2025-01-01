@@ -42,9 +42,9 @@ func Timer(f func(int, context.Context) *big.Int, limit float64) (string, []inte
 		}
 	}
 
-	fibonacciNumberString := fibonacciNumber.String()
 	computeTimeElapsed := time.Since(computeTimeStart)
 	computeTimeFormated := formatDuration(computeTimeElapsed, 3)
+	fibonacciNumberString := fibonacciNumber.String()
 
 	sentence := fmt.Sprintf(
 		"\nThe biggest Fibonacci number that has been computed in less than \033[35m%s\033[0m second is the \033[32m%dnth\033[0m Fibonacci number\n\n"+
@@ -64,9 +64,9 @@ func TimeNumber(f func(int, context.Context) *big.Int, number int) (string, []in
 
 	fibonacciNumber = f(number, ctx)
 
-	fibonacciNumberString := fibonacciNumber.String()
 	computeTimeElapsed := time.Since(computeTimeStart)
 	computeTimeFormated := formatDuration(computeTimeElapsed, 3)
+	fibonacciNumberString := fibonacciNumber.String()
 
 	sentence := fmt.Sprintf(
 		"\nThe \033[35m%dnth\033[0m Fibonacci number is :\n\033[32m%s\033[0m\n\n"+
