@@ -6,13 +6,13 @@ import (
 	"sync"
 )
 
-var lookupTable = map[int]*big.Int{
-	0: big.NewInt(0),
-	1: big.NewInt(1),
-}
-var mu sync.Mutex
-
 func FibonacciRecursiveOptimized(n int, ctx context.Context) *big.Int {
+	var lookupTable = map[int]*big.Int{
+		0: big.NewInt(0),
+		1: big.NewInt(1),
+	}
+	var mu sync.Mutex
+
 	result := big.NewInt(0)
 	done := make(chan struct{})
 
