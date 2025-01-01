@@ -95,15 +95,15 @@ func TestMatrixResult(test *testing.T) {
 	}{
 		{"Recursive", algorithms.FibonacciRecursive, 0},
 		{"Recursive", algorithms.FibonacciRecursive, 1},
-		{"Recursive", algorithms.FibonacciRecursive, 10000},
-		{"Recursive", algorithms.FibonacciRecursive, 30000},
-		{"Recursive", algorithms.FibonacciRecursive, 40000},
-		{"Recursive", algorithms.FibonacciRecursive, 50000},
-		{"Recursive", algorithms.FibonacciRecursive, 60000},
-		{"Recursive", algorithms.FibonacciRecursive, 70000},
-		{"Recursive", algorithms.FibonacciRecursive, 80000},
-		{"Recursive", algorithms.FibonacciRecursive, 90000},
-		{"Recursive", algorithms.FibonacciRecursive, 100000},
+		{"Recursive", algorithms.FibonacciRecursive, 10_000},
+		{"Recursive", algorithms.FibonacciRecursive, 30_000},
+		{"Recursive", algorithms.FibonacciRecursive, 40_000},
+		{"Recursive", algorithms.FibonacciRecursive, 50_000},
+		{"Recursive", algorithms.FibonacciRecursive, 60_000},
+		{"Recursive", algorithms.FibonacciRecursive, 70_000},
+		{"Recursive", algorithms.FibonacciRecursive, 80_000},
+		{"Recursive", algorithms.FibonacciRecursive, 90_000},
+		{"Recursive", algorithms.FibonacciRecursive, 100_000},
 	}
 
 	for _, unitTest := range unitTests {
@@ -129,16 +129,16 @@ func TestRecursiveOptimizedResult(test *testing.T) {
 	}{
 		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 0},
 		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 1},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 100000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 200000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 300000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 400000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 500000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 600000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 700000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 800000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 900000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 1000000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 100_000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 200_000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 300_000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 400_000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 500_000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 600_000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 700_000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 800_000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 900_000},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 1_000_000},
 	}
 
 	for _, unitTest := range unitTests {
@@ -164,16 +164,16 @@ func TestIterativeResult(test *testing.T) {
 	}{
 		{"Iterative", algorithms.FibonacciIterative, 0},
 		{"Iterative", algorithms.FibonacciIterative, 1},
-		{"Iterative", algorithms.FibonacciIterative, 100000},
-		{"Iterative", algorithms.FibonacciIterative, 200000},
-		{"Iterative", algorithms.FibonacciIterative, 300000},
-		{"Iterative", algorithms.FibonacciIterative, 400000},
-		{"Iterative", algorithms.FibonacciIterative, 500000},
-		{"Iterative", algorithms.FibonacciIterative, 600000},
-		{"Iterative", algorithms.FibonacciIterative, 700000},
-		{"Iterative", algorithms.FibonacciIterative, 800000},
-		{"Iterative", algorithms.FibonacciIterative, 900000},
-		{"Iterative", algorithms.FibonacciIterative, 1000000},
+		{"Iterative", algorithms.FibonacciIterative, 100_000},
+		{"Iterative", algorithms.FibonacciIterative, 200_000},
+		{"Iterative", algorithms.FibonacciIterative, 300_000},
+		{"Iterative", algorithms.FibonacciIterative, 400_000},
+		{"Iterative", algorithms.FibonacciIterative, 500_000},
+		{"Iterative", algorithms.FibonacciIterative, 600_000},
+		{"Iterative", algorithms.FibonacciIterative, 700_000},
+		{"Iterative", algorithms.FibonacciIterative, 800_000},
+		{"Iterative", algorithms.FibonacciIterative, 900_000},
+		{"Iterative", algorithms.FibonacciIterative, 1_000_000},
 	}
 
 	for _, unitTest := range unitTests {
