@@ -19,14 +19,14 @@ func readFile(index int) (string, error) {
 	}
 	defer file.Close()
 
-	scanner := bufio.NewScanner(file)
+	reader := bufio.NewReader(file)
 
-	if scanner.Scan() {
-		return scanner.Text(), nil
-	} else {
-		return "", fmt.Errorf("error reading file: %w", scanner.Err())
+	line, err := reader.ReadString('\n')
+	if err != nil && err.Error() != "EOF" {
+		return "", fmt.Errorf("error reading file: %w", err)
 	}
 
+	return line, nil
 }
 
 func TestTimeNumber(test *testing.T) {
