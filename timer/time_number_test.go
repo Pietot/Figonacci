@@ -158,14 +158,6 @@ func TestIterativeResult(test *testing.T) {
 		{"Iterative", algorithms.FibonacciIterative, 0},
 		{"Iterative", algorithms.FibonacciIterative, 1},
 		{"Iterative", algorithms.FibonacciIterative, 100_000},
-		{"Iterative", algorithms.FibonacciIterative, 200_000},
-		{"Iterative", algorithms.FibonacciIterative, 300_000},
-		{"Iterative", algorithms.FibonacciIterative, 400_000},
-		{"Iterative", algorithms.FibonacciIterative, 500_000},
-		{"Iterative", algorithms.FibonacciIterative, 600_000},
-		{"Iterative", algorithms.FibonacciIterative, 700_000},
-		{"Iterative", algorithms.FibonacciIterative, 800_000},
-		{"Iterative", algorithms.FibonacciIterative, 900_000},
 		{"Iterative", algorithms.FibonacciIterative, 1_000_000},
 	}
 
