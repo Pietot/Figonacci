@@ -75,6 +75,7 @@ func TestRecursiveResult(test *testing.T) {
 		{"Recursive", algorithms.FibonacciRecursive, 9, "34"},
 		{"Recursive", algorithms.FibonacciRecursive, 10, "55"},
 		{"Recursive", algorithms.FibonacciRecursive, 20, "6765"},
+		{"Recursive", algorithms.FibonacciRecursive, 30, "832040"},
 	}
 
 	for _, unitTest := range unitTests {
