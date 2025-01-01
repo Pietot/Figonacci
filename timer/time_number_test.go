@@ -121,3 +121,38 @@ func TestRecursiveOptimizedResult(test *testing.T) {
 		})
 	}
 }
+
+func TestIterativeResult(test *testing.T) {
+	unitTests := []struct {
+		name     string
+		function func(int, context.Context) *big.Int
+		number   int
+	}{
+		{"Iterative", algorithms.FibonacciIterative, 0},
+		{"Iterative", algorithms.FibonacciIterative, 1},
+		{"Iterative", algorithms.FibonacciIterative, 100000},
+		{"Iterative", algorithms.FibonacciIterative, 200000},
+		{"Iterative", algorithms.FibonacciIterative, 300000},
+		{"Iterative", algorithms.FibonacciIterative, 400000},
+		{"Iterative", algorithms.FibonacciIterative, 500000},
+		{"Iterative", algorithms.FibonacciIterative, 600000},
+		{"Iterative", algorithms.FibonacciIterative, 700000},
+		{"Iterative", algorithms.FibonacciIterative, 800000},
+		{"Iterative", algorithms.FibonacciIterative, 900000},
+		{"Iterative", algorithms.FibonacciIterative, 1000000},
+	}
+
+	for _, unitTest := range unitTests {
+		test.Run(unitTest.name, func(test *testing.T) {
+			_, result := TimeNumber(unitTest.function, unitTest.number)
+			expected, err := readFile(unitTest.number)
+			if err != nil {
+				test.Errorf("%v", err)
+				return
+			}
+			if result[1] != expected {
+				test.Errorf("Expected %s, got %s", expected, result[1])
+			}
+		})
+	}
+}
