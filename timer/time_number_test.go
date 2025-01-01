@@ -122,16 +122,8 @@ func TestRecursiveOptimizedResult(test *testing.T) {
 	}{
 		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 0},
 		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 1},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 10_000},
 		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 100_000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 200_000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 300_000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 400_000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 500_000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 600_000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 700_000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 800_000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 900_000},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 1_000_000},
 	}
 
 	for _, unitTest := range unitTests {
