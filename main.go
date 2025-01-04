@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Figonacci/timer"
 	"Figonacci/algorithms"
+	"Figonacci/timer"
 	"context"
 	"fmt"
 	"math/big"
@@ -114,7 +114,7 @@ func handleCompute(args []string) error {
 
 	fmt.Printf("Executing compute with algorithm \033[35m%s\033[0m...\n", algoName)
 
-	sentence, _ := timer.TimeNumber(algoFunc, value)
+	sentence, _ := timer.Compute(algoFunc, value)
 	fmt.Println(sentence)
 	return nil
 }

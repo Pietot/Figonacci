@@ -29,7 +29,7 @@ func readFile(index int) (string, error) {
 	return line, nil
 }
 
-func TestTimeNumber(test *testing.T) {
+func TestCompute(test *testing.T) {
 	unitTests := []struct {
 		name     string
 		function func(int, context.Context) *big.Int
@@ -45,7 +45,7 @@ func TestTimeNumber(test *testing.T) {
 
 	for _, unitTest := range unitTests {
 		test.Run(unitTest.name, func(test *testing.T) {
-			sentence, result := TimeNumber(unitTest.function, unitTest.number)
+			sentence, result := Compute(unitTest.function, unitTest.number)
 			if len(result) != 4 {
 				test.Errorf("Expected 4 results, got %d", len(result))
 			}
@@ -80,7 +80,7 @@ func TestRecursiveResult(test *testing.T) {
 
 	for _, unitTest := range unitTests {
 		test.Run(unitTest.name, func(test *testing.T) {
-			_, result := TimeNumber(unitTest.function, unitTest.number)
+			_, result := Compute(unitTest.function, unitTest.number)
 			if result[1] != unitTest.expected {
 				test.Errorf("Expected %s, got %s", unitTest.expected, result[1])
 			}
@@ -102,7 +102,7 @@ func TestMatrixResult(test *testing.T) {
 
 	for _, unitTest := range unitTests {
 		test.Run(unitTest.name, func(test *testing.T) {
-			_, result := TimeNumber(unitTest.function, unitTest.number)
+			_, result := Compute(unitTest.function, unitTest.number)
 			expected, err := readFile(unitTest.number)
 			if err != nil {
 				test.Errorf("%v", err)
@@ -129,7 +129,7 @@ func TestRecursiveOptimizedResult(test *testing.T) {
 
 	for _, unitTest := range unitTests {
 		test.Run(unitTest.name, func(test *testing.T) {
-			_, result := TimeNumber(unitTest.function, unitTest.number)
+			_, result := Compute(unitTest.function, unitTest.number)
 			expected, err := readFile(unitTest.number)
 			if err != nil {
 				test.Errorf("%v", err)
@@ -156,7 +156,7 @@ func TestIterativeResult(test *testing.T) {
 
 	for _, unitTest := range unitTests {
 		test.Run(unitTest.name, func(test *testing.T) {
-			_, result := TimeNumber(unitTest.function, unitTest.number)
+			_, result := Compute(unitTest.function, unitTest.number)
 			expected, err := readFile(unitTest.number)
 			if err != nil {
 				test.Errorf("%v", err)
@@ -184,7 +184,7 @@ func TestMatrixOptimizedResult(test *testing.T) {
 
 	for _, unitTest := range unitTests {
 		test.Run(unitTest.name, func(test *testing.T) {
-			_, result := TimeNumber(unitTest.function, unitTest.number)
+			_, result := Compute(unitTest.function, unitTest.number)
 			expected, err := readFile(unitTest.number)
 			if err != nil {
 				test.Errorf("%v", err)
@@ -212,7 +212,7 @@ func TestFieldExtensionResult(test *testing.T) {
 
 	for _, unitTest := range unitTests {
 		test.Run(unitTest.name, func(test *testing.T) {
-			_, result := TimeNumber(unitTest.function, unitTest.number)
+			_, result := Compute(unitTest.function, unitTest.number)
 			expected, err := readFile(unitTest.number)
 			if err != nil {
 				test.Errorf("%v", err)

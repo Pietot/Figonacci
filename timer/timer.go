@@ -57,7 +57,7 @@ func Timer(f func(int, context.Context) *big.Int, limit float64) (string, []inte
 	return sentence, []interface{}{highNumber, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed}
 }
 
-func TimeNumber(f func(int, context.Context) *big.Int, number int) (string, []interface{}) {
+func Compute(f func(int, context.Context) *big.Int, number int) (string, []interface{}) {
 	ctx := context.Background()
 	fibonacciNumber := new(big.Int)
 	computeTimeStart := time.Now()
