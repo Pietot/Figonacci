@@ -1,10 +1,11 @@
 package timer
 
 import (
-	"Figonacci/algorithms"
 	"context"
 	"math/big"
 	"testing"
+
+	"github.com/Pietot/Figonacci/algorithms"
 )
 
 func TestTimer(test *testing.T) {

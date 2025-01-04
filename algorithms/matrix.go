@@ -1,9 +1,10 @@
 package algorithms
 
 import (
-	"Figonacci/matrix"
 	"context"
 	"math/big"
+
+	"github.com/Pietot/Figonacci/matrix"
 )
 
 func FibonacciMatrix(n int, ctx context.Context) *big.Int {

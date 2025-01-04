@@ -1,13 +1,14 @@
 package main
 
 import (
-	"Figonacci/algorithms"
-	"Figonacci/timer"
 	"context"
 	"fmt"
 	"math/big"
 	"os"
 	"strconv"
+
+	"github.com/Pietot/Figonacci/algorithms"
+	"github.com/Pietot/Figonacci/timer"
 )
 
 func main() {

@@ -1,9 +1,10 @@
 package algorithms
 
 import (
-	"Figonacci/matrix"
 	"context"
 	"math/big"
+
+	"github.com/Pietot/Figonacci/matrix"
 )
 
 // Use of fast exponentiation to calculate the Fibonacci number

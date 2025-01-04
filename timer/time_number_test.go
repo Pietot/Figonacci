@@ -1,7 +1,6 @@
 package timer
 
 import (
-	"Figonacci/algorithms"
 	"bufio"
 	"context"
 	"fmt"
@@ -9,6 +8,8 @@ import (
 	"os"
 	"strconv"
 	"testing"
+
+	"github.com/Pietot/Figonacci/algorithms"
 )
 
 func readFile(index int) (string, error) {
