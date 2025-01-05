@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Pietot/Figonacci/timer"
+	"github.com/Pietot/Figonacci/v2/timer"
 )
 
 func TestFormatDuration(test *testing.T) {

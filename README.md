@@ -47,7 +47,7 @@ To begin, two options are available to you:
   If you want to use the package in your own project, you can install it with the following command in your current project:
 
   ```go
-  go get github.com/Pietot/Figonacci
+  go get github.com/Pietot/Figonacci/v2
   ```
 
 ## 3 - How to use
@@ -116,7 +116,7 @@ To begin, two options are available to you:
       "context"
       "fmt"
 
-      "github.com/Pietot/Figonacci/algorithms"
+      "github.com/Pietot/Figonacci/v2/algorithms"
     )
 
     func main() {
@@ -140,8 +140,8 @@ To begin, two options are available to you:
       import (
         "fmt"
 
-        "github.com/Pietot/Figonacci/algorithms"
-        "github.com/Pietot/Figonacci/timer"
+        "github.com/Pietot/Figonacci/v2/algorithms"
+        "github.com/Pietot/Figonacci/v2/timer"
       )
 
       func main() {
@@ -162,8 +162,8 @@ To begin, two options are available to you:
       import (
         "fmt"
 
-        "github.com/Pietot/Figonacci/algorithms"
-        "github.com/Pietot/Figonacci/timer"
+        "github.com/Pietot/Figonacci/v2/algorithms"
+        "github.com/Pietot/Figonacci/v2/timer"
       )
 
       func main() {
@@ -205,7 +205,7 @@ All the algorithms are implemented in the package and can be used in the tool. T
 
   We use a matrix to calculate the Fibonacci number of the index. We use the following formula:
 
-  #### F(n) = [[1, 1], [1, 0]] ^ (n-1) * [1, 0]
+  #### F(n) = [[1, 1], [1, 0]] ^ (n-1) \* [1, 0]
 
   - Flag: `--matrix` or `--m`
   - algorithm name: `algorithms.Matrix`

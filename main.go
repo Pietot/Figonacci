@@ -7,8 +7,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/Pietot/Figonacci/algorithms"
-	"github.com/Pietot/Figonacci/timer"
+	"github.com/Pietot/Figonacci/v2/algorithms"
+	"github.com/Pietot/Figonacci/v2/timer"
 )
 
 func main() {
