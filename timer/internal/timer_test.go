@@ -1,3 +1,4 @@
+// Package timer provides functions to compute the Fibonacci number of a given index and to determine the largest Fibonacci index that can be computed within a given time limit.
 package timer
 
 import (

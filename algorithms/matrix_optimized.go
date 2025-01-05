@@ -1,3 +1,4 @@
+// Package algorithms provides functions to compute a Fibonacci number using different algorithms.
 package algorithms
 
 import (
