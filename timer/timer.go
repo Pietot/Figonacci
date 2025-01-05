@@ -43,7 +43,7 @@ func Timer(f func(int, context.Context) *big.Int, limit float64) (string, []inte
 	}
 
 	computeTimeElapsed := time.Since(computeTimeStart)
-	computeTimeFormated := formatDuration(computeTimeElapsed, 3)
+	computeTimeFormated := FormatDuration(computeTimeElapsed, 3)
 	fibonacciNumberString := fibonacciNumber.String()
 
 	sentence := fmt.Sprintf(
@@ -51,7 +51,7 @@ func Timer(f func(int, context.Context) *big.Int, limit float64) (string, []inte
 			"It's value is :\n\033[32m%s\033[0m\n\n"+
 			"It has \033[32m%d\033[0m digits.\n\n"+
 			"It has been found in \033[32m%s\033[0m",
-		formatDuration(duration, 0), highNumber, fibonacciNumberString, len(fibonacciNumberString), computeTimeFormated,
+		FormatDuration(duration, 0), highNumber, fibonacciNumberString, len(fibonacciNumberString), computeTimeFormated,
 	)
 
 	return sentence, []interface{}{highNumber, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed}
@@ -65,7 +65,7 @@ func Compute(f func(int, context.Context) *big.Int, number int) (string, []inter
 	fibonacciNumber = f(number, ctx)
 
 	computeTimeElapsed := time.Since(computeTimeStart)
-	computeTimeFormated := formatDuration(computeTimeElapsed, 3)
+	computeTimeFormated := FormatDuration(computeTimeElapsed, 3)
 	fibonacciNumberString := fibonacciNumber.String()
 
 	sentence := fmt.Sprintf(
@@ -80,7 +80,7 @@ func Compute(f func(int, context.Context) *big.Int, number int) (string, []inter
 	return sentence, []interface{}{number, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed}
 }
 
-func formatDuration(duration time.Duration, precision int) string {
+func FormatDuration(duration time.Duration, precision int) string {
 	switch {
 	case duration < time.Nanosecond:
 		return fmt.Sprintf("%v", duration)

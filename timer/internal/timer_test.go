@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/Pietot/Figonacci/algorithms"
+	"github.com/Pietot/Figonacci/timer"
 )
 
 func TestTimer(test *testing.T) {
@@ -24,7 +25,7 @@ func TestTimer(test *testing.T) {
 
 	for _, unitTest := range algos {
 		test.Run(unitTest.name, func(test *testing.T) {
-			sentence, result := Timer(unitTest.function, unitTest.limit)
+			sentence, result := timer.Timer(unitTest.function, unitTest.limit)
 			if len(result) != 4 {
 				test.Errorf("Expected 4 results, got %d", len(result))
 			}

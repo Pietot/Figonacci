@@ -3,6 +3,8 @@ package timer
 import (
 	"testing"
 	"time"
+
+	"github.com/Pietot/Figonacci/timer"
 )
 
 func TestFormatDuration(test *testing.T) {
@@ -27,7 +29,7 @@ func TestFormatDuration(test *testing.T) {
 
 	for _, unitTest := range unitTests {
 		test.Run(unitTest.expected, func(test *testing.T) {
-			result := formatDuration(unitTest.duration, unitTest.precision)
+			result := timer.FormatDuration(unitTest.duration, unitTest.precision)
 			if result != unitTest.expected {
 				test.Errorf("Expected %s, got %s", unitTest.expected, result)
 			}

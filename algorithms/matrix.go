@@ -4,7 +4,7 @@ import (
 	"context"
 	"math/big"
 
-	"github.com/Pietot/Figonacci/matrix"
+	matrix "github.com/Pietot/Figonacci/algorithms/internal"
 )
 
 func FibonacciMatrix(n int, ctx context.Context) *big.Int {
