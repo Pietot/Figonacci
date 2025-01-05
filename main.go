@@ -55,7 +55,7 @@ func printUsage() {
 	fmt.Println("        1 - \033[34mfield_extension (fe)\033[0m")
 	fmt.Println("        2 - \033[36mmatrix_optimized (mo)\033[0m")
 	fmt.Println("        3 - \033[32miterative (i)\033[0m")
-	fmt.Println("        4 - \033[32mrecursive_optimized (ro)\033[0m")
+	fmt.Println("        4 - \033[33mrecursive_optimized (ro)\033[0m")
 	fmt.Println("        5 - \033[33mmatrix (m)\033[0m")
 	fmt.Println("        6 - \033[31mrecursive (r)\033[0m")
 	fmt.Println("")
