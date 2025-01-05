@@ -135,8 +135,8 @@ func isValidAlgorithm(algorithm string) (func(int, context.Context) *big.Int, st
 		"m":                   {algorithms.FibonacciMatrix, "matrix"},
 		"matrix_optimized":    {algorithms.FibonacciMatrixOptimized, "matrix optimized"},
 		"mo":                  {algorithms.FibonacciMatrixOptimized, "matrix optimized"},
-		"field_extension":     {algorithms.FibonacciFieldExtension, "field extension"},
-		"fe":                  {algorithms.FibonacciFieldExtension, "field extension"},
+		"field_extension":     {algorithms.FieldExtension, "field extension"},
+		"fe":                  {algorithms.FieldExtension, "field extension"},
 	}
 
 	if entry, exists := validAlgorithms[algorithm]; exists {
