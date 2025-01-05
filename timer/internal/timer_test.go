@@ -20,7 +20,7 @@ func TestTimer(test *testing.T) {
 		{"Iterative", algorithms.FibonacciIterative, 1},
 		{"Matrix", algorithms.FibonacciMatrix, 1},
 		{"MatrixOptimized", algorithms.FibonacciMatrixOptimized, 1},
-		{"FieldExtension", algorithms.FibonacciFieldExtension, 1},
+		{"FieldExtension", algorithms.FieldExtension, 1},
 	}
 
 	for _, unitTest := range algos {

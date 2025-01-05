@@ -42,7 +42,7 @@ func TestCompute(test *testing.T) {
 		{"Iterative", algorithms.FibonacciIterative, 10},
 		{"Matrix", algorithms.FibonacciMatrix, 10},
 		{"MatrixOptimized", algorithms.FibonacciMatrixOptimized, 10},
-		{"FieldExtension", algorithms.FibonacciFieldExtension, 10},
+		{"FieldExtension", algorithms.FieldExtension, 10},
 	}
 
 	for _, unitTest := range unitTests {
@@ -205,11 +205,11 @@ func TestFieldExtensionResult(test *testing.T) {
 		function func(int, context.Context) *big.Int
 		number   int
 	}{
-		{"FieldExtension", algorithms.FibonacciFieldExtension, 0},
-		{"FieldExtension", algorithms.FibonacciFieldExtension, 1},
-		{"FieldExtension", algorithms.FibonacciFieldExtension, 100_000},
-		{"FieldExtension", algorithms.FibonacciFieldExtension, 1_000_000},
-		{"FieldExtension", algorithms.FibonacciFieldExtension, 10_000_000},
+		{"FieldExtension", algorithms.FieldExtension, 0},
+		{"FieldExtension", algorithms.FieldExtension, 1},
+		{"FieldExtension", algorithms.FieldExtension, 100_000},
+		{"FieldExtension", algorithms.FieldExtension, 1_000_000},
+		{"FieldExtension", algorithms.FieldExtension, 10_000_000},
 	}
 
 	for _, unitTest := range unitTests {

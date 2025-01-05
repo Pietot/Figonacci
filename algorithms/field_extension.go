@@ -34,7 +34,7 @@ func (fieldExtension *fieldExtension) rightShift() {
 	fieldExtension.B.Rsh(fieldExtension.B, 1)
 }
 
-func FibonacciFieldExtension(n int, ctx context.Context) *big.Int {
+func FieldExtension(n int, ctx context.Context) *big.Int {
 	result := big.NewInt(0)
 	done := make(chan struct{})
 
