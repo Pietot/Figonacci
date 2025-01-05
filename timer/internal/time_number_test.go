@@ -14,7 +14,7 @@ import (
 )
 
 func readFile(index int) (string, error) {
-	filePath := "../fibonacci_numbers/" + strconv.Itoa(index) + ".txt"
+	filePath := "../../fibonacci_numbers/" + strconv.Itoa(index) + ".txt"
 	file, err := os.Open(filePath)
 	if err != nil {
 		return "", fmt.Errorf("error opening file: %w", err)
