@@ -54,7 +54,7 @@ To begin, two options are available to you:
 
 - ### With the binary file
 
-  If you've downloaded a binary, just open a CLI and write:
+  If you've downloaded the binary, just open a CLI and write:
 
   ```bash
   cd {path to the .exe}
