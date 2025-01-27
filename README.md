@@ -278,7 +278,7 @@ If you like this project and/or want to help or improve it, you can:
 
 > **Note**: If you want to be guided/helped, you already have a file named <a href="improvements.txt">improvements.txt</a> in the project directory, where you can see all the improvements that can be made.
 
-# 7 - Credits
+## 7 - Credits
 
 - **[Original video](https://www.youtube.com/watch?v=KzT9I1d-LlQ)**: The video that inspired me to create this project.
 - **[Original source code](https://github.com/SheafificationOfG/Fibsonicci)**: The source code of the video.
