@@ -62,14 +62,14 @@ func Timer(f func(int, context.Context) *big.Int, limit_second float64) (string,
 	fibonacciNumberString := fibonacciNumber.String()
 
 	sentence := fmt.Sprintf(
-		"\nThe biggest Fibonacci index that has been computed in less than \033[35m%s\033[0m second is \033[32m%d\033[0m\n\n"+
-			"It's value is :\n\033[32m%s\033[0m\n\n"+
+		"\nThe biggest Fibonacci number that has been computed in less than \033[35m%s\033[0m second is \033[32m%s\033[0m\n\n"+
+			"It's index is :\n\033[32m%d\033[0m\n\n"+
 			"It has \033[32m%d\033[0m digits.\n\n"+
 			"It has been found in \033[32m%s\033[0m",
-		FormatDuration(duration, 0), highNumber, fibonacciNumberString, len(fibonacciNumberString), computeTimeFormated,
+		FormatDuration(duration, 0), fibonacciNumberString, highNumber, len(fibonacciNumberString), computeTimeFormated,
 	)
 
-	return sentence, []any{highNumber, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed}
+	return sentence, []any{fibonacciNumberString, highNumber, len(fibonacciNumberString), computeTimeElapsed}
 }
 
 // Compute the Fibonacci number of a given index
