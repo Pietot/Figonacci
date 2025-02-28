@@ -23,7 +23,7 @@ func (m *Matrix2x2) Pow(n int) *Matrix2x2 {
 		[2]*big.Int{big.NewInt(0), big.NewInt(1)},
 	}
 	base := m
-	for i := 0; i < n; i++ {
+	for range n {
 		result = result.Multiply(result, base)
 	}
 	return result
