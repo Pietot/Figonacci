@@ -22,6 +22,7 @@ func TestTimer(test *testing.T) {
 		{"Matrix", algorithms.FibonacciMatrix, 1},
 		{"MatrixOptimized", algorithms.FibonacciMatrixOptimized, 1},
 		{"FieldExtension", algorithms.FieldExtension, 1},
+		{"Pihedron", algorithms.Pihedron, 1},
 	}
 
 	for _, unitTest := range algos {

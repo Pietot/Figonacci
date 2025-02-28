@@ -227,3 +227,31 @@ func TestFieldExtensionResult(test *testing.T) {
 		})
 	}
 }
+
+func TestPihedronResult(test *testing.T) {
+	unitTests := []struct {
+		name     string
+		function func(int, context.Context) *big.Int
+		number   int
+	}{
+		{"Pihedron", algorithms.Pihedron, 0},
+		{"Pihedron", algorithms.Pihedron, 1},
+		{"Pihedron", algorithms.Pihedron, 100_000},
+		{"Pihedron", algorithms.Pihedron, 1_000_000},
+		{"Pihedron", algorithms.Pihedron, 10_000_000},
+	}
+
+	for _, unitTest := range unitTests {
+		test.Run(unitTest.name, func(test *testing.T) {
+			_, result := timer.Compute(unitTest.function, unitTest.number)
+			expected, err := readFile(unitTest.number)
+			if err != nil {
+				test.Errorf("%v", err)
+				return
+			}
+			if result[1] != expected {
+				test.Errorf("Expected %s, got %s", expected, result[1])
+			}
+		})
+	}
+}
