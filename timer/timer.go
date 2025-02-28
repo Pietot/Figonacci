@@ -22,7 +22,7 @@ import (
 // - The number of digits of the value
 //
 // - The time taken to search for the largest Fibonacci number
-func Timer(f func(int, context.Context) *big.Int, limit_second float64) (string, []interface{}) {
+func Timer(f func(int, context.Context) *big.Int, limit_second float64) (string, []any) {
 	duration := time.Duration(limit_second * float64(time.Second))
 	fibonacciNumber := new(big.Int)
 	fibonacciTemp := new(big.Int)
@@ -69,7 +69,7 @@ func Timer(f func(int, context.Context) *big.Int, limit_second float64) (string,
 		FormatDuration(duration, 0), highNumber, fibonacciNumberString, len(fibonacciNumberString), computeTimeFormated,
 	)
 
-	return sentence, []interface{}{highNumber, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed}
+	return sentence, []any{highNumber, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed}
 }
 
 // Compute the Fibonacci number of a given index
@@ -82,7 +82,7 @@ func Timer(f func(int, context.Context) *big.Int, limit_second float64) (string,
 // - The number of digits of the value
 //
 // - The time taken to compute the index
-func Compute(f func(int, context.Context) *big.Int, index int) (string, []interface{}) {
+func Compute(f func(int, context.Context) *big.Int, index int) (string, []any) {
 	ctx := context.Background()
 	fibonacciNumber := new(big.Int)
 	computeTimeStart := time.Now()
@@ -102,7 +102,7 @@ func Compute(f func(int, context.Context) *big.Int, index int) (string, []interf
 		index, fibonacciNumberString, len(fibonacciNumberString), computeTimeFormated,
 	)
 
-	return sentence, []interface{}{index, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed}
+	return sentence, []any{index, fibonacciNumberString, len(fibonacciNumberString), computeTimeElapsed}
 }
 
 func FormatDuration(duration time.Duration, precision int) string {
