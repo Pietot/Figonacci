@@ -221,25 +221,30 @@ All the algorithms are implemented in the package and can be used in the tool. T
 
 - ### Field Extension
 
-  I'm gonna be honest, I didn't understang a single step of this algorithm but it works and it's the fastest one.
+  I'm gonna be honest, I didn't understand a single step of this algorithm but it works and it's the fastest one.
 
   If you want the explanation of this method, you can watch the video I looked [here](https://youtu.be/KzT9I1d-LlQ?t=1177).
 
   - Flag: `--field_extension` or `--fe`
   - algorithm name: `algorithms.FieldExtension`
 
+- ### Pihedron
+
+  For this one, the idea is to use the Lucas sequence to calculate the Fibonacci number of the index. The Lucas sequence is a sequence similar to the Fibonacci sequence but with different starting numbers. This algorithm is named Pihedron because it's the name of the person who created it. Video [here](https://www.youtube.com/watch?v=6ZyTqfFCnjg&t=193s&pp=ygUIcGloZWRyb24%3D).
+
 ## 5 - Benchmark
 
 Here are the algorithms ranked from the fastest to the slowest over a second:
 
-| Rank |              Algorithm              | Index | Search time | Max memory used | Implementation |
-| :--: | :---------------------------------: | :---: | :---------: | :-------------: | :------------: |
-|  1   |         **Field Extension**         | ~6.5M |    ~24s     |      ~27Mo      |       💀       |
-|  2   | **Matrix with fast exponentiation** | ~4.2M |   ~24.5s    |      ~60Mo      |    Average     |
-|  3   |            **Iterative**            | ~630K |    ~21s     |      ~7Mo       |      Free      |
-|  4   |   **Recursive with memoisation**    | ~192K |    18.5s    |      ~7Go       |     Tricky     |
-|  5   |             **Matrix**              | 81918 |    ~14s     |      ~75Mo      |    Average     |
-|  6   |            **Recursive**            |  33   |    ~6.5s    |      ~8Mo       |      Easy      |
+| Rank |              Algorithm              | Index  | Search time | Max memory used | Implementation |
+| :--: | :---------------------------------: | :----: | :---------: | :-------------: | :------------: |
+|  1   |            **Pihedron**             | ~17.1M |    ~26s     |      ~108Mo      |      Hard      |
+|  2   |         **Field Extension**         | ~6.5M  |    ~24s     |      ~27Mo      |       💀       |
+|  3   | **Matrix with fast exponentiation** | ~4.2M  |   ~24.5s    |      ~60Mo      |    Average     |
+|  4   |            **Iterative**            | ~630K  |    ~21s     |      ~7Mo       |      Free      |
+|  5   |   **Recursive with memoisation**    | ~192K  |    18.5s    |      ~7Go       |     Tricky     |
+|  6   |             **Matrix**              | 81918  |    ~14s     |      ~75Mo      |    Average     |
+|  7   |            **Recursive**            |   33   |    ~6.5s    |      ~8Mo       |      Easy      |
 
 <br>
 
@@ -257,6 +262,7 @@ Then, we can put the graph to a logarithmic scale to evaluate the complexity of 
 
 |              Algorithm              | Time Complexity |
 | :---------------------------------: | :-------------: |
+|            **Pihedron**             |   ~ O(n^1.53)   |
 |         **Field Extension**         |   ~ O(n^1.58)   |
 | **Matrix with fast exponentiation** |   ~ O(n^1.54)   |
 |            **Iterative**            |   ~ O(n^1.67)   |
