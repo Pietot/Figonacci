@@ -288,3 +288,4 @@ If you like this project and/or want to help or improve it, you can:
 
 - **[Original video](https://www.youtube.com/watch?v=KzT9I1d-LlQ)**: The video that inspired me to create this project.
 - **[Original source code](https://github.com/SheafificationOfG/Fibsonicci)**: The source code of the video.
+- **[Pihedron video](https://www.youtube.com/watch?v=6ZyTqfFCnjg&t=193s&pp=ygUIcGloZWRyb24%3D)**: The video that explains the Pihedron algorithm.
