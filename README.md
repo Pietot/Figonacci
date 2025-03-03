@@ -241,12 +241,12 @@ Here are the algorithms ranked from the fastest to the slowest over a second:
 
 | Rank |              Algorithm              | Index  | Search time | Max memory used | Implementation |
 | :--: | :---------------------------------: | :----: | :---------: | :-------------: | :------------: |
-|  1   |            **Pihedron**             | ~17.1M |    ~26s     |      ~108Mo      |      Hard      |
+|  1   |            **Pihedron**             | ~17.1M |    ~26s     |      ~108Mo     |    Average     |
 |  2   |         **Field Extension**         | ~6.5M  |    ~24s     |      ~27Mo      |       💀       |
-|  3   | **Matrix with fast exponentiation** | ~4.2M  |   ~24.5s    |      ~60Mo      |    Average     |
+|  3   | **Matrix with fast exponentiation** | ~4.2M  |   ~24.5s    |      ~60Mo      |      Hard      |
 |  4   |            **Iterative**            | ~630K  |    ~21s     |      ~7Mo       |      Free      |
 |  5   |   **Recursive with memoisation**    | ~192K  |    18.5s    |      ~7Go       |     Tricky     |
-|  6   |             **Matrix**              | 81918  |    ~14s     |      ~75Mo      |    Average     |
+|  6   |             **Matrix**              | 81918  |    ~14s     |      ~75Mo      |      Hard      |
 |  7   |            **Recursive**            |   33   |    ~6.5s    |      ~8Mo       |      Easy      |
 
 <br>
