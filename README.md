@@ -232,6 +232,9 @@ All the algorithms are implemented in the package and can be used in the tool. T
 
   For this one, the idea is to use the Lucas sequence to calculate the Fibonacci number of the index. The Lucas sequence is a sequence similar to the Fibonacci sequence but with different starting numbers. This algorithm is named Pihedron because it's the name of the person who created it. Video [here](https://www.youtube.com/watch?v=6ZyTqfFCnjg&t=193s&pp=ygUIcGloZWRyb24%3D).
 
+  - Flag: `--pihedron` or `--p`
+  - algorithm name: `algorithms.Pihedron`
+
 ## 5 - Benchmark
 
 Here are the algorithms ranked from the fastest to the slowest over a second:
