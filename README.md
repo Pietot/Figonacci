@@ -2,6 +2,7 @@
 
 ![Localisation](https://img.shields.io/badge/Made_in-France-red?labelColor=blue)
 ![Language](https://img.shields.io/badge/Language-Go-f7d3a2?labelColor=00aed8)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/Pietot/Figonacci)
 
 Figonacci is a tool and package wich calculates the largest Fibonacci number that can be calculated in less than a second (can be changed) using different algorithms. It also includes functionality to measure the calculation time of a specific Fibonacci number.
 
