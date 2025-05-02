@@ -110,7 +110,7 @@ func handleCompute(args []string) error {
 	value, err := strconv.Atoi(valueStr)
 	if err != nil {
 		return fmt.Errorf("invalid value: %s. Expected an integer", valueStr)
-	} else if value < 0 {
+	} else if value <= 0 {
 		return fmt.Errorf("invalid value: %d. Expected a positive integer greater than 0", value)
 	}
 
