@@ -2,6 +2,7 @@
 
 ![Localisation](https://img.shields.io/badge/Made_in-France-red?labelColor=blue)
 ![Language](https://img.shields.io/badge/Language-Go-f7d3a2?labelColor=00aed8)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/Pietot/Figonacci)
 
 Figonacci is a tool and package wich calculates the largest Fibonacci number that can be calculated in less than a second (can be changed) using different algorithms. It also includes functionality to measure the calculation time of a specific Fibonacci number.
 
@@ -232,18 +233,21 @@ All the algorithms are implemented in the package and can be used in the tool. T
 
   For this one, the idea is to use the Lucas sequence to calculate the Fibonacci number of the index. The Lucas sequence is a sequence similar to the Fibonacci sequence but with different starting numbers. This algorithm is named Pihedron because it's the name of the person who created it. Video [here](https://www.youtube.com/watch?v=6ZyTqfFCnjg&t=193s&pp=ygUIcGloZWRyb24%3D).
 
+  - Flag: `--pihedron` or `--p`
+  - algorithm name: `algorithms.Pihedron`
+
 ## 5 - Benchmark
 
 Here are the algorithms ranked from the fastest to the slowest over a second:
 
 | Rank |              Algorithm              | Index  | Search time | Max memory used | Implementation |
 | :--: | :---------------------------------: | :----: | :---------: | :-------------: | :------------: |
-|  1   |            **Pihedron**             | ~17.1M |    ~26s     |      ~108Mo      |      Hard      |
+|  1   |            **Pihedron**             | ~17.1M |    ~26s     |      ~108Mo     |    Average     |
 |  2   |         **Field Extension**         | ~6.5M  |    ~24s     |      ~27Mo      |       💀       |
-|  3   | **Matrix with fast exponentiation** | ~4.2M  |   ~24.5s    |      ~60Mo      |    Average     |
+|  3   | **Matrix with fast exponentiation** | ~4.2M  |   ~24.5s    |      ~60Mo      |      Hard      |
 |  4   |            **Iterative**            | ~630K  |    ~21s     |      ~7Mo       |      Free      |
 |  5   |   **Recursive with memoisation**    | ~192K  |    18.5s    |      ~7Go       |     Tricky     |
-|  6   |             **Matrix**              | 81918  |    ~14s     |      ~75Mo      |    Average     |
+|  6   |             **Matrix**              | 81918  |    ~14s     |      ~75Mo      |      Hard      |
 |  7   |            **Recursive**            |   33   |    ~6.5s    |      ~8Mo       |      Easy      |
 
 <br>
