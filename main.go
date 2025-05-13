@@ -47,7 +47,7 @@ func printUsage() {
 	fmt.Println("        timer   --algorithm [--limit] (optional, in second, default to 1 second)")
 	fmt.Println("        \033[35mTo find the largest Fibonacci index calculable in less than a second\033[0m")
 	fmt.Println("")
-	fmt.Println("        compute --algorithm --value")
+	fmt.Println("        compute --algorithm --index")
 	fmt.Println("        \033[35mTo compute the Fibonacci number at the specified index\033[0m")
 	fmt.Println("")
 	fmt.Println("    Available algorithms (from \033[34mfastest\033[0m to \033[31mslowest\033[0m):")
