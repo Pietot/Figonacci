@@ -110,8 +110,8 @@ func handleCompute(args []string) error {
 	value, err := strconv.Atoi(valueStr)
 	if err != nil {
 		return fmt.Errorf("invalid value: %s. Expected an integer", valueStr)
-	} else if value <= 0 {
-		return fmt.Errorf("invalid value: %d. Expected a positive integer greater than 0", value)
+	} else if value < 0 {
+		return fmt.Errorf("invalid value: %d. Expected an integer greater than or equal to 0", value)
 	}
 
 	fmt.Printf("Executing compute with algorithm \033[35m%s\033[0m...\n", algoName)
