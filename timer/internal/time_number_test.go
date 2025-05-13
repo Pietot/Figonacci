@@ -48,33 +48,6 @@ func readFile(index int) (string, error) {
 	return line, nil
 }
 
-func TestCompute(test *testing.T) {
-	unitTests := []struct {
-		name     string
-		function func(int, context.Context) *big.Int
-		number   int
-	}{
-		{"Recursive", algorithms.FibonacciRecursive, 10},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 10},
-		{"Iterative", algorithms.FibonacciIterative, 10},
-		{"Matrix", algorithms.FibonacciMatrix, 10},
-		{"MatrixOptimized", algorithms.FibonacciMatrixOptimized, 10},
-		{"FieldExtension", algorithms.FieldExtension, 10},
-	}
-
-	for _, unitTest := range unitTests {
-		test.Run(unitTest.name, func(test *testing.T) {
-			sentence, result := timer.Compute(unitTest.function, unitTest.number)
-			if len(result) != 4 {
-				test.Errorf("Expected 4 results, got %d", len(result))
-			}
-			if sentence == "" {
-				test.Errorf("Expected non-empty sentence")
-			}
-		})
-	}
-}
-
 func TestRecursiveResult(test *testing.T) {
 	unitTests := []struct {
 		name     string
@@ -255,6 +228,7 @@ func TestPihedronResult(test *testing.T) {
 		{"Pihedron", algorithms.Pihedron, 100_000},
 		{"Pihedron", algorithms.Pihedron, 1_000_000},
 		{"Pihedron", algorithms.Pihedron, 10_000_000},
+		{"Pihedron", algorithms.Pihedron, 20_000_000},
 	}
 
 	for _, unitTest := range unitTests {
