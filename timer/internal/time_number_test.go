@@ -14,8 +14,24 @@ import (
 	"github.com/Pietot/Figonacci/v2/timer"
 )
 
+func formatNumberWithUnderscore(n int) string {
+	s := strconv.Itoa(n)
+	result := ""
+	count := 0
+
+	for i := len(s) - 1; i >= 0; i-- {
+		if count > 0 && count%3 == 0 {
+			result = "_" + result
+		}
+		result = string(s[i]) + result
+		count++
+	}
+
+	return result
+}
+
 func readFile(index int) (string, error) {
-	filePath := "../../fibonacci_numbers/" + strconv.Itoa(index) + ".txt"
+	filePath := "../../fibonacci_numbers/" + formatNumberWithUnderscore(index) + ".txt"
 	file, err := os.Open(filePath)
 	if err != nil {
 		return "", fmt.Errorf("error opening file: %w", err)
