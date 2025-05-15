@@ -41,7 +41,7 @@ To begin, two options are available to you:
 
 - ### Executable
 
-  If you want to use the tool directly, you can download the latest release from the [releases page]()
+  If you want to use the tool directly, you can download the latest release from the [releases page](https://github.com/Pietot/Figonacci/releases/latesta)
 
 - ### Package
 
@@ -86,11 +86,11 @@ To begin, two options are available to you:
     Use the following commande if you want to compute the time it takes to calculate a specific Fibonacci number:
 
     ```bash
-    figonacci.exe compute --algorithm --number
+    figonacci.exe compute --algorithm --index
     ```
 
     - **algorithm**: Where you specify the algorithm you want to use, you can see them [here](#4---algorithms)
-    - **number** The Fibonacci index you want to calculate, it must be a positive integer
+    - **index** The Fibonacci index you want to calculate, it must be a greater than or equal to zero
 
     For example:
 
