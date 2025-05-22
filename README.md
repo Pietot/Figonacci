@@ -90,7 +90,7 @@ To begin, two options are available to you:
     ```
 
     - **algorithm**: Where you specify the algorithm you want to use, you can see them [here](#4---algorithms)
-    - **index** The Fibonacci index you want to calculate, it must be a greater than or equal to zero
+    - **index** The Fibonacci index you want to calculate, it must be greater than or equal to zero
 
     For example:
 
