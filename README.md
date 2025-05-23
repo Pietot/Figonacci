@@ -59,7 +59,7 @@ To begin, two options are available to you:
 
   ```bash
   cd {path to the .exe}
-  figonacci.exe
+  figonacci-x64-v2.1.0.exe
   ```
 
   > **Note**: For more flexibility, put the path to the exe file in your PATH environment so you can use it from anywhere just by typing `figonacci` (need to rename the .exe file to figonacci.exe'.
@@ -71,7 +71,7 @@ To begin, two options are available to you:
     Use the following commande if you want to find the largest Fibonacci number that can be calculated in less than a specific time:
 
     ```bash
-    figonacci.exe timer --algorithm [--limit]
+    figonacci-x64-v2.1.0.exe timer --algorithm [--limit]
     ```
 
     - **algorithm**: Where you specify the algorithm you want to use, you can see them [here](#4---algorithms)
@@ -80,7 +80,7 @@ To begin, two options are available to you:
     For example:
 
     ```bash
-    figonacci.exe timer --ro --0.25
+    figonacci-x64-v2.1.0.exe timer --ro --0.25
     ```
 
   - #### Compute
@@ -88,7 +88,7 @@ To begin, two options are available to you:
     Use the following commande if you want to compute the time it takes to calculate a specific Fibonacci number:
 
     ```bash
-    figonacci.exe compute --algorithm --index
+    figonacci-x64-v2.1.0.exe compute --algorithm --index
     ```
 
     - **algorithm**: Where you specify the algorithm you want to use, you can see them [here](#4---algorithms)
@@ -97,7 +97,7 @@ To begin, two options are available to you:
     For example:
 
     ```bash
-    figonacci.exe compute --i --75648
+    figonacci-x64-v2.1.0.exe compute --i --75648
     ```
 
   After that, the tool will print you the results.
