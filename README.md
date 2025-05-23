@@ -62,6 +62,8 @@ To begin, two options are available to you:
   figonacci.exe
   ```
 
+  > **Note**: For more flexibility, put the path to the exe file in your PATH environment so you can use it from anywhere just by typing `figonacci` (need to rename the .exe file to figonacci.exe'.
+
   Then it will print you how to use the tool correctly but I will explain it here further:
 
   - #### Timer
@@ -99,8 +101,6 @@ To begin, two options are available to you:
     ```
 
   After that, the tool will print you the results.
-
-  For more flexibility, put the path to the exe file in your PATH environment so you can use it from anywhere just by typing `figonacci` (need to rename the .exe file to figonacci.exe'.
 
 - ### With the package
 
