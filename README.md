@@ -1,6 +1,6 @@
 # 🔢 Figonacci
 
-![Localisation](https://img.shields.io/badge/Made_in-France-red?labelColor=blue)
+![Location](https://img.shields.io/badge/Made_in-France-red?labelColor=blue)
 ![Language](https://img.shields.io/badge/Language-Go-f7d3a2?labelColor=00aed8)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Pietot/Figonacci)
 
