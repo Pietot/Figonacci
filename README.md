@@ -32,7 +32,7 @@ Figonacci is a tool and package wich calculates the largest Fibonacci number tha
 
 - Find the largest Fibonacci number that can be calculated in less than a second (limit can be changed)
 - Calculate the time it takes to calculate a specific Fibonacci number
-- Use different algorithms to calculate the Fibonacci number among [6 of them](#4---algorithms)
+- Use different algorithms to calculate the Fibonacci number among [7 of them](#4---algorithms)
 - Use the package in your own project
 
 ## 2 - Installation
@@ -41,7 +41,7 @@ To begin, two options are available to you:
 
 - ### Executable
 
-  If you want to use the tool directly, you can download the latest release from the [releases page](https://github.com/Pietot/Figonacci/releases/latesta)
+  If you want to use the tool directly, you can download the latest release from the [releases page](https://github.com/Pietot/Figonacci/releases/latest)
 
 - ### Package
 
@@ -114,7 +114,6 @@ To begin, two options are available to you:
     package main
 
     import (
-      "context"
       "fmt"
 
       "github.com/Pietot/Figonacci/v2/algorithms"
@@ -122,10 +121,10 @@ To begin, two options are available to you:
 
     func main() {
       // Calculate F(16 180) with the matrix algorithm.
-      // context.Background() is used to set no limit to the calculation time.
-      // You can set a limit with context.WithTimeout(context.Background(), time.Second)
-      result := algorithms.Matrix(16180, context.Background())
+      result := algorithms.Matrix(16180)
       fmt.Println(result)
+      // If you're using algithms.Recursive, you must import context and add a context.Background() to the function call.
+      // result := algorithms.Recursive(16180, context.Background())
     }
     ```
 
@@ -153,7 +152,7 @@ To begin, two options are available to you:
       }
       ```
 
-      > **Note**: The runtime will surely be longer than the limit set because of the time it takes to search for the largest Fibonacci number.
+      > **Note**: The runtime will be longer than the limit set because of the time it takes to search for the largest Fibonacci number.
 
     - #### Calculate the time it takes to calculate a specific Fibonacci number
 
@@ -222,7 +221,7 @@ All the algorithms are implemented in the package and can be used in the tool. T
 
 - ### Field Extension
 
-  I'm gonna be honest, I didn't understand a single step of this algorithm but it works and it's the fastest one.
+  I'm gonna be honest, I didn't understand a single step of this algorithm but it works and it's the second fastest algorithm.
 
   If you want the explanation of this method, you can watch the video I looked [here](https://youtu.be/KzT9I1d-LlQ?t=1177).
 
@@ -240,41 +239,25 @@ All the algorithms are implemented in the package and can be used in the tool. T
 
 Here are the algorithms ranked from the fastest to the slowest over a second:
 
-| Rank |              Algorithm              | Index  | Search time | Max memory used | Implementation |
-| :--: | :---------------------------------: | :----: | :---------: | :-------------: | :------------: |
-|  1   |            **Pihedron**             | ~17.1M |    ~26s     |      ~108Mo     |    Average     |
-|  2   |         **Field Extension**         | ~6.5M  |    ~24s     |      ~27Mo      |       💀       |
-|  3   | **Matrix with fast exponentiation** | ~4.2M  |   ~24.5s    |      ~60Mo      |      Hard      |
-|  4   |            **Iterative**            | ~630K  |    ~21s     |      ~7Mo       |      Free      |
-|  5   |   **Recursive with memoisation**    | ~192K  |    18.5s    |      ~7Go       |     Tricky     |
-|  6   |             **Matrix**              | 81918  |    ~14s     |      ~75Mo      |      Hard      |
-|  7   |            **Recursive**            |   33   |    ~6.5s    |      ~8Mo       |      Easy      |
+| Rank |              Algorithm              |  Index  | Search time | Max memory used | Implementation |
+| :--: | :---------------------------------: | :-----: | :---------: | :-------------: | :------------: |
+|  1   |            **Pihedron**             | ~17.68M |    ~29s     |      ~50Mo      |    Average     |
+|  2   |         **Field Extension**         | ~6.519M |    ~24s     |      ~23Mo      |       💀       |
+|  3   | **Matrix with fast exponentiation** | ~4.194M |    ~34s     |      ~31Mo      |      Hard      |
+|  4   |            **Iterative**            |  ~628K  |    ~23s     |      ~7Mo       |      Free      |
+|  5   |   **Recursive with memoisation**    |  ~192K  |    ~20s     |     ~8.5Go      |     Tricky     |
+|  6   |             **Matrix**              |  ~98K   |    ~19s     |      ~90Mo      |      Hard      |
+|  7   |            **Recursive**            |   33    |     ~6s     |      ~8Mo       |      Easy      |
 
 <br>
 
 ![Calculation time of an index of the Fibonacci sequence](assets/svg/calculation_time_of_an_index_of_the_fibonacci_sequence.svg)
 
 <p align="center">
-  <a href="assets/csv/figonnacci.csv">Download csv here</a>
+  <a href="assets/csv/figonnacci.csv">Download csv here (v2.1.0)</a>
 </p>
 
 > **Note**: Tests have been made on a 64-bit Windows 10 computer with a Ryzen 5 3600 and 16GB of RAM clocked at 3600MHz in go1.22.5 windows/amd64.
-
-Then, we can put the graph to a logarithmic scale to evaluate the complexity of each algorithm:
-
-![Calculation time of an index of the Fibonacci sequence](assets/svg/calculation_time_of_an_index_of_the_fibonacci_sequence_log_scale.svg)
-
-|              Algorithm              | Time Complexity |
-| :---------------------------------: | :-------------: |
-|            **Pihedron**             |   ~ O(n^1.53)   |
-|         **Field Extension**         |   ~ O(n^1.58)   |
-| **Matrix with fast exponentiation** |   ~ O(n^1.54)   |
-|            **Iterative**            |   ~ O(n^1.67)   |
-|   **Recursive with memoisation**    |   ~ O(n^1.62)   |
-|             **Matrix**              |   ~ O(n^1.8)    |
-|            **Recursive**            |     O(2^n)      |
-
-> **Note**: Except for the recursive algorithm, all the others time complexities are approximations and not the real ones.
 
 ## 6 - Improve the project
 

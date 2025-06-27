@@ -2,8 +2,6 @@
 package timer
 
 import (
-	"context"
-	"math/big"
 	"testing"
 
 	"github.com/Pietot/Figonacci/v2/algorithms"
@@ -13,16 +11,16 @@ import (
 func TestTimer(test *testing.T) {
 	algos := []struct {
 		name     string
-		function func(int, context.Context) *big.Int
+		function any
 		limit    float64
 	}{
-		{"Recursive", algorithms.FibonacciRecursive, 1},
-		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 1},
-		{"Iterative", algorithms.FibonacciIterative, 1},
-		{"Matrix", algorithms.FibonacciMatrix, 1},
-		{"MatrixOptimized", algorithms.FibonacciMatrixOptimized, 1},
-		{"FieldExtension", algorithms.FieldExtension, 1},
-		{"Pihedron", algorithms.Pihedron, 1},
+		{"Recursive", algorithms.FibonacciRecursive, 0.1},
+		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 0.1},
+		{"Iterative", algorithms.FibonacciIterative, 0.1},
+		{"Matrix", algorithms.FibonacciMatrix, 0.1},
+		{"MatrixOptimized", algorithms.FibonacciMatrixOptimized, 0.1},
+		{"FieldExtension", algorithms.FieldExtension, 0.1},
+		{"Pihedron", algorithms.Pihedron, 0.1},
 	}
 
 	for _, unitTest := range algos {
@@ -41,7 +39,7 @@ func TestTimer(test *testing.T) {
 func TestCompute(test *testing.T) {
 	unitTests := []struct {
 		name     string
-		function func(int, context.Context) *big.Int
+		function any
 		number   int
 	}{
 		{"Recursive", algorithms.FibonacciRecursive, 10},

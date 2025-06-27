@@ -3,9 +3,7 @@ package timer
 
 import (
 	"bufio"
-	"context"
 	"fmt"
-	"math/big"
 	"os"
 	"strconv"
 	"testing"
@@ -51,7 +49,7 @@ func readFile(index int) (string, error) {
 func TestRecursiveResult(test *testing.T) {
 	unitTests := []struct {
 		name     string
-		function func(int, context.Context) *big.Int
+		function any
 		number   int
 		expected string
 	}{
@@ -83,7 +81,7 @@ func TestRecursiveResult(test *testing.T) {
 func TestMatrixResult(test *testing.T) {
 	unitTests := []struct {
 		name     string
-		function func(int, context.Context) *big.Int
+		function any
 		number   int
 	}{
 		{"Matrix", algorithms.FibonacciMatrix, 0},
@@ -110,7 +108,7 @@ func TestMatrixResult(test *testing.T) {
 func TestRecursiveOptimizedResult(test *testing.T) {
 	unitTests := []struct {
 		name     string
-		function func(int, context.Context) *big.Int
+		function any
 		number   int
 	}{
 		{"RecursiveOptimized", algorithms.FibonacciRecursiveOptimized, 0},
@@ -137,7 +135,7 @@ func TestRecursiveOptimizedResult(test *testing.T) {
 func TestIterativeResult(test *testing.T) {
 	unitTests := []struct {
 		name     string
-		function func(int, context.Context) *big.Int
+		function any
 		number   int
 	}{
 		{"Iterative", algorithms.FibonacciIterative, 0},
@@ -164,7 +162,7 @@ func TestIterativeResult(test *testing.T) {
 func TestMatrixOptimizedResult(test *testing.T) {
 	unitTests := []struct {
 		name     string
-		function func(int, context.Context) *big.Int
+		function any
 		number   int
 	}{
 		{"MatrixOptimized", algorithms.FibonacciMatrixOptimized, 0},
@@ -192,7 +190,7 @@ func TestMatrixOptimizedResult(test *testing.T) {
 func TestFieldExtensionResult(test *testing.T) {
 	unitTests := []struct {
 		name     string
-		function func(int, context.Context) *big.Int
+		function any
 		number   int
 	}{
 		{"FieldExtension", algorithms.FieldExtension, 0},
@@ -220,7 +218,7 @@ func TestFieldExtensionResult(test *testing.T) {
 func TestPihedronResult(test *testing.T) {
 	unitTests := []struct {
 		name     string
-		function func(int, context.Context) *big.Int
+		function any
 		number   int
 	}{
 		{"Pihedron", algorithms.Pihedron, 0},

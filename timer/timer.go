@@ -4,8 +4,9 @@ package timer
 import (
 	"context"
 	"fmt"
-	"math/big"
 	"time"
+
+	"math/big"
 )
 
 // Timer determines the largest Fibonacci index that can be computed within a given time limit.
@@ -22,7 +23,7 @@ import (
 // - The number of digits of the value
 //
 // - The time taken to search for the largest Fibonacci number
-func Timer(f func(int, context.Context) *big.Int, limit_second float64) (string, []any) {
+func Timer(function any, limit_second float64) (string, []any) {
 	duration := time.Duration(limit_second * float64(time.Second))
 	fibonacciNumber := new(big.Int)
 	fibonacciTemp := new(big.Int)
@@ -30,31 +31,59 @@ func Timer(f func(int, context.Context) *big.Int, limit_second float64) (string,
 	lowNumber, highNumber := 0, 1
 	computeTimeStart := time.Now()
 
-	// Initial test to find the range of numbers that takes less than 1 second to compute
-	for {
-		ctx, cancel := context.WithTimeout(context.Background(), duration)
-		if f(highNumber, ctx).Cmp(zero) == 0 {
-			cancel()
-			break
+	switch fn := function.(type) {
+	case func(int) *big.Int:
+		// Initial test to find the range of numbers that takes less than 1 second to compute
+		for {
+			start := time.Now()
+			fn(highNumber)
+			if time.Since(start) >= duration {
+				break
+			}
+			lowNumber = highNumber
+			highNumber *= 2
 		}
-		cancel()
-		lowNumber = highNumber
-		highNumber *= 2
-	}
+		// Binary search to find the biggest number that takes less than 1 second to compute
+		for lowNumber <= highNumber {
+			mid := (lowNumber + highNumber) / 2
+			start := time.Now()
+			fibonacciTemp = fn(mid)
+			if time.Since(start) >= duration {
+				highNumber = mid - 1
+			} else {
+				lowNumber = mid + 1
+				fibonacciNumber.Set(fibonacciTemp)
+			}
+		}
+	case func(int, context.Context) *big.Int:
+		// Initial test to find the range of numbers that takes less than 1 second to compute
+		for {
+			ctx, cancel := context.WithTimeout(context.Background(), duration)
+			if fn(highNumber, ctx).Cmp(zero) == 0 {
+				cancel()
+				break
+			}
+			cancel()
+			lowNumber = highNumber
+			highNumber *= 2
+		}
 
-	// Binary search to find the biggest number that takes less than 1 second to compute
-	for lowNumber <= highNumber {
-		mid := (lowNumber + highNumber) / 2
-		ctx, cancel := context.WithTimeout(context.Background(), duration)
-		fibonacciTemp = f(mid, ctx)
-		if fibonacciTemp.Cmp(zero) == 0 {
-			cancel()
-			highNumber = mid - 1
-		} else {
-			cancel()
-			lowNumber = mid + 1
-			fibonacciNumber.Set(fibonacciTemp)
+		// Binary search to find the biggest number that takes less than 1 second to compute
+		for lowNumber <= highNumber {
+			mid := (lowNumber + highNumber) / 2
+			ctx, cancel := context.WithTimeout(context.Background(), duration)
+			fibonacciTemp = fn(mid, ctx)
+			if fibonacciTemp.Cmp(zero) == 0 {
+				cancel()
+				highNumber = mid - 1
+			} else {
+				cancel()
+				lowNumber = mid + 1
+				fibonacciNumber.Set(fibonacciTemp)
+			}
 		}
+	default:
+		panic("Unsupported function type.")
 	}
 
 	computeTimeElapsed := time.Since(computeTimeStart)
@@ -82,14 +111,24 @@ func Timer(f func(int, context.Context) *big.Int, limit_second float64) (string,
 // - The number of digits of the value
 //
 // - The time taken to compute the index
-func Compute(f func(int, context.Context) *big.Int, index int) (string, []any) {
-	ctx := context.Background()
+func Compute(function any, index int) (string, []any) {
 	fibonacciNumber := new(big.Int)
-	computeTimeStart := time.Now()
+	var computeTimeElapsed time.Duration
 
-	fibonacciNumber = f(index, ctx)
+	switch fn := function.(type) {
+	case func(int) *big.Int:
+		computeTimeStart := time.Now()
+		fibonacciNumber = fn(index)
+		computeTimeElapsed = time.Since(computeTimeStart)
+	case func(int, context.Context) *big.Int:
+		computeTimeStart := time.Now()
+		ctx := context.Background()
+		fibonacciNumber = fn(index, ctx)
+		computeTimeElapsed = time.Since(computeTimeStart)
+	default:
+		panic("Unsupported function type.")
+	}
 
-	computeTimeElapsed := time.Since(computeTimeStart)
 	computeTimeFormated := FormatDuration(computeTimeElapsed, 3)
 	fibonacciNumberString := fibonacciNumber.String()
 

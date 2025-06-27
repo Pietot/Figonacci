@@ -1,9 +1,7 @@
 package main
 
 import (
-	"context"
 	"fmt"
-	"math/big"
 	"os"
 	"strconv"
 
@@ -121,9 +119,9 @@ func handleCompute(args []string) error {
 	return nil
 }
 
-func isValidAlgorithm(algorithm string) (func(int, context.Context) *big.Int, string) {
+func isValidAlgorithm(algorithm string) (any, string) {
 	validAlgorithms := map[string]struct {
-		function func(int, context.Context) *big.Int
+		function any
 		name     string
 	}{
 		"recursive":           {algorithms.FibonacciRecursive, "recursive"},
