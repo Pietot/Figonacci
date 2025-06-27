@@ -1,6 +1,6 @@
 # 🔢 Figonacci
 
-![Localisation](https://img.shields.io/badge/Made_in-France-red?labelColor=blue)
+![Location](https://img.shields.io/badge/Made_in-France-red?labelColor=blue)
 ![Language](https://img.shields.io/badge/Language-Go-f7d3a2?labelColor=00aed8)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Pietot/Figonacci)
 
@@ -59,8 +59,10 @@ To begin, two options are available to you:
 
   ```bash
   cd {path to the .exe}
-  figonacci.exe
+  figonacci-x64-v2.1.0.exe
   ```
+
+  > **Note**: For more flexibility, put the path to the exe file in your PATH environment so you can use it from anywhere just by typing `figonacci` (need to rename the .exe file to figonacci.exe'.
 
   Then it will print you how to use the tool correctly but I will explain it here further:
 
@@ -69,7 +71,7 @@ To begin, two options are available to you:
     Use the following commande if you want to find the largest Fibonacci number that can be calculated in less than a specific time:
 
     ```bash
-    figonacci.exe timer --algorithm [--limit]
+    figonacci-x64-v2.1.0.exe timer --algorithm [--limit]
     ```
 
     - **algorithm**: Where you specify the algorithm you want to use, you can see them [here](#4---algorithms)
@@ -78,7 +80,7 @@ To begin, two options are available to you:
     For example:
 
     ```bash
-    figonacci.exe timer --ro --0.25
+    figonacci-x64-v2.1.0.exe timer --ro --0.25
     ```
 
   - #### Compute
@@ -86,21 +88,19 @@ To begin, two options are available to you:
     Use the following commande if you want to compute the time it takes to calculate a specific Fibonacci number:
 
     ```bash
-    figonacci.exe compute --algorithm --number
+    figonacci-x64-v2.1.0.exe compute --algorithm --index
     ```
 
     - **algorithm**: Where you specify the algorithm you want to use, you can see them [here](#4---algorithms)
-    - **number** The Fibonacci index you want to calculate, it must be a positive integer
+    - **index** The Fibonacci index you want to calculate, it must be greater than or equal to zero
 
     For example:
 
     ```bash
-    figonacci.exe compute --i --75648
+    figonacci-x64-v2.1.0.exe compute --i --75648
     ```
 
   After that, the tool will print you the results.
-
-  For more flexibility, put the path to the exe file in your PATH environment so you can use it from anywhere just by typing `fibonacci.exe`.
 
 - ### With the package
 
