@@ -245,7 +245,7 @@ Here are the algorithms ranked from the fastest to the slowest over a second:
 |  2   |         **Field Extension**         | ~6.519M |    ~24s     |      ~23Mo      |       💀       |
 |  3   | **Matrix with fast exponentiation** | ~4.194M |    ~34s     |      ~31Mo      |      Hard      |
 |  4   |            **Iterative**            |  ~628K  |    ~23s     |      ~7Mo       |      Free      |
-|  5   |   **Recursive with memoisation**    |  ~192K  |    ~20s     |     ~8.5Go      |     Tricky     |
+|  5   |   **Recursive with memoisation**    |  ~192K  |    ~20s     |     ~7.5Go      |      Easy      |
 |  6   |             **Matrix**              |  ~98K   |    ~19s     |      ~90Mo      |      Hard      |
 |  7   |            **Recursive**            |   33    |     ~6s     |      ~8Mo       |      Easy      |
 
