@@ -6,10 +6,7 @@ import (
 )
 
 func FibonacciRecursiveOptimized(n int) *big.Int {
-	var lookupTable = map[int]*big.Int{
-		0: big.NewInt(0),
-		1: big.NewInt(1),
-	}
+	var lookupTable = map[int]*big.Int{}
 
 	var recursive func(int) *big.Int
 	recursive = func(n int) *big.Int {
